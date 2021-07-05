@@ -1,0 +1,2 @@
+rootProject.name = "Muffin"
+include ':app'
