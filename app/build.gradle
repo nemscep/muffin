@@ -80,9 +80,12 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
     // Navigation
-    // Kotlin
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
     /* ************** TESTS ************** */
     // Mockito
