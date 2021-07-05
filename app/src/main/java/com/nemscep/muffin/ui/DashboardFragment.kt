@@ -9,10 +9,12 @@ import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.nemscep.muffin.R
 import com.nemscep.muffin.R.layout
+import com.nemscep.muffin.TrackBottomSheetDialog
 import com.nemscep.muffin.databinding.FragmentDashboardBinding
 import viewBinding
 
@@ -45,6 +47,17 @@ class DashboardFragment : Fragment(layout.fragment_dashboard) {
     private fun FragmentDashboardBinding.setupDestinationChangeListener() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             handleDestinationChange(newDestination = destination)
+        }
+        bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            // Manually set item change since onNavigationItemSelected overrides setupWithNavController destination change.
+            NavigationUI.onNavDestinationSelected(item, navController)
+            when (item.itemId) {
+                R.id.track -> {
+                    TrackBottomSheetDialog().show(childFragmentManager, TrackBottomSheetDialog.TAG)
+                    return@setOnNavigationItemSelectedListener false
+                }
+                else -> true
+            }
         }
     }
 
