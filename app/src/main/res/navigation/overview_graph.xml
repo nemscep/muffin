@@ -11,4 +11,10 @@
         android:label="@string/overview"
         tools:layout="@layout/fragment_overview" />
 
+    <fragment
+        android:id="@+id/balanceDetails"
+        android:name="com.nemscep.muffin.BalanceDetails"
+        android:label="@string/balance_details"
+        tools:layout="@layout/fragment_balance_details" />
+
 </navigation>

@@ -7,6 +7,11 @@
     android:orientation="vertical"
     tools:context=".ui.DashboardFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarDashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/dashboardNavHost"
         android:name="androidx.navigation.fragment.NavHostFragment"
