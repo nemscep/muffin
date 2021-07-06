@@ -1,7 +1,13 @@
 package com.nemscep.muffin.ui
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -33,6 +39,22 @@ class DashboardFragment : Fragment(layout.fragment_dashboard) {
 
         binding.setupNavController()
         binding.setupDestinationChangeListener()
+        binding.setupToolbar()
+    }
+
+    private fun FragmentDashboardBinding.setupToolbar() {
+        toolbarDashboard.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.profileOption -> Toast
+                    .makeText(requireContext(), "Profile", Toast.LENGTH_SHORT)
+                    .show()
+                R.id.notificationOption -> Toast
+                    .makeText(requireContext(), "Notifications", Toast.LENGTH_SHORT)
+                    .show()
+                else -> Unit
+            }
+            true
+        }
     }
 
     private fun FragmentDashboardBinding.setupNavController() {

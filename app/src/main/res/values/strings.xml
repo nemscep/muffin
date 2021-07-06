@@ -5,4 +5,6 @@
     <string name="history">History</string>
     <string name="balance_details">Balance Details</string>
     <string name="track">Track</string>
+    <string name="profile">Profile</string>
+    <string name="notifications">Notifications</string>
 </resources>
