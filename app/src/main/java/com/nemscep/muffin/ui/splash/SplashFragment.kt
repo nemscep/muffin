@@ -12,6 +12,6 @@ class SplashFragment : Fragment(layout.fragment_splash) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        findNavController().navigate(R.id.dashboardFragment)
+        findNavController().navigate(R.id.action_global_dashboardFragment)
     }
 }
