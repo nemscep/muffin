@@ -44,6 +44,9 @@ class DashboardFragment : Fragment(layout.fragment_dashboard) {
                 R.id.notificationOption -> Toast
                     .makeText(requireContext(), "Notifications", Toast.LENGTH_SHORT)
                     .show()
+                R.id.searchOption -> Toast
+                    .makeText(requireContext(), "Search", Toast.LENGTH_SHORT)
+                    .show()
                 else -> Unit
             }
             true
@@ -83,6 +86,18 @@ class DashboardFragment : Fragment(layout.fragment_dashboard) {
             }
             else -> {
                 bottomNavigation.isVisible = false
+            }
+        }
+        when (newDestination.id) {
+            R.id.overviewFragment -> {
+                toolbarDashboard.menu.findItem(R.id.profileOption).isVisible = true
+                toolbarDashboard.menu.findItem(R.id.notificationOption).isVisible = true
+                toolbarDashboard.menu.findItem(R.id.searchOption).isVisible = false
+            }
+            R.id.historyFragment -> {
+                toolbarDashboard.menu.findItem(R.id.profileOption).isVisible = false
+                toolbarDashboard.menu.findItem(R.id.notificationOption).isVisible = false
+                toolbarDashboard.menu.findItem(R.id.searchOption).isVisible = true
             }
         }
     }
