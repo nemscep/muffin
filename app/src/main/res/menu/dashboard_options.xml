@@ -20,4 +20,9 @@
         android:title="@string/search"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/logoutOption"
+        android:title="@string/logout"
+        app:showAsAction="never" />
+
 </menu>

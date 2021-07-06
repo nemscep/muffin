@@ -47,6 +47,9 @@ class DashboardFragment : Fragment(layout.fragment_dashboard) {
                 R.id.searchOption -> Toast
                     .makeText(requireContext(), "Search", Toast.LENGTH_SHORT)
                     .show()
+                R.id.logoutOption -> Toast
+                    .makeText(requireContext(), "Logout", Toast.LENGTH_SHORT)
+                    .show()
                 else -> Unit
             }
             true
