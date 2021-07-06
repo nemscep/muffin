@@ -7,16 +7,16 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.nemscep.muffin.ui.splash.SplashFragment"
+        android:name="com.nemscep.muffin.splash.SplashFragment"
         tools:layout="@layout/fragment_splash" />
     <fragment
         android:id="@+id/authFragment"
-        android:name="com.nemscep.muffin.ui.auth.AuthFragment"
+        android:name="com.nemscep.muffin.auth.AuthFragment"
         android:label="@string/authentication"
         tools:layout="@layout/fragment_auth" />
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.nemscep.muffin.ui.DashboardFragment"
+        android:name="com.nemscep.muffin.dashboard.DashboardFragment"
         tools:layout="@layout/fragment_dashboard" />
     <action
         android:id="@+id/action_global_dashboardFragment"

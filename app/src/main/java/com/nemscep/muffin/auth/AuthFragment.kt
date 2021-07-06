@@ -1,4 +1,4 @@
-package com.nemscep.muffin.ui.auth
+package com.nemscep.muffin.auth
 
 import androidx.fragment.app.Fragment
 import com.nemscep.muffin.R.layout

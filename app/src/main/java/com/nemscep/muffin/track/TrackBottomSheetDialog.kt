@@ -1,11 +1,11 @@
-package com.nemscep.muffin
+package com.nemscep.muffin.track
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.nemscep.muffin.R.layout
 
 class TrackBottomSheetDialog : BottomSheetDialogFragment() {
 
@@ -13,7 +13,7 @@ class TrackBottomSheetDialog : BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.dialog_track, container, false)
+    ): View? = inflater.inflate(layout.dialog_track, container, false)
 
     companion object{
         val TAG = "TrackBottomSheetDialog"

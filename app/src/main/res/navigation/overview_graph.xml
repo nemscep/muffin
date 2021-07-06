@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/overviewFragment"
-        android:name="com.nemscep.muffin.OverviewFragment"
+        android:name="com.nemscep.muffin.overview.OverviewFragment"
         android:label="@string/overview"
         tools:layout="@layout/fragment_overview" />
 
     <fragment
         android:id="@+id/balanceDetails"
-        android:name="com.nemscep.muffin.BalanceDetails"
+        android:name="com.nemscep.muffin.overview.BalanceDetails"
         android:label="@string/balance_details"
         tools:layout="@layout/fragment_balance_details" />
 

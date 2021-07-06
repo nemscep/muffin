@@ -1,4 +1,4 @@
-package com.nemscep.muffin.ui
+package com.nemscep.muffin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

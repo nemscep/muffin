@@ -1,4 +1,4 @@
-package com.nemscep.muffin.ui.splash
+package com.nemscep.muffin.splash
 
 import android.os.Bundle
 import android.view.View
