@@ -9,6 +9,9 @@ import kotlinx.coroutines.flow.Flow
  */
 class ProfileRepositoryImpl() : ProfileRepository {
 
+    override val isLoggedIn: Flow<Boolean>
+        get() = TODO("Not yet implemented")
+
     override fun getProfile(): Flow<Profile> {
         TODO("Not yet implemented")
     }

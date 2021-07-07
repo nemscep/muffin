@@ -16,4 +16,9 @@ interface ProfileRepository {
      * Stores provided [Profile].
      */
     fun setProfile(profile: Profile)
+
+    /**
+     * Retrieves [Boolean][Flow] of whether user is logged in or not.
+     */
+    val isLoggedIn: Flow<Boolean>
 }
