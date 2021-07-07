@@ -1,5 +1,7 @@
 package com.nemscep.muffin.profile.domain.repo
 
+import com.nemscep.burrito.CompositeFailure
+import com.nemscep.burrito.Outcome
 import com.nemscep.muffin.profile.domain.entities.Profile
 import kotlinx.coroutines.flow.Flow
 
@@ -15,7 +17,7 @@ interface ProfileRepository {
     /**
      * Stores provided [Profile].
      */
-    fun setProfile(profile: Profile)
+    suspend fun setProfile(profile: Profile): Outcome<Unit, CompositeFailure<Nothing>>
 
     /**
      * Retrieves [Boolean][Flow] of whether user is logged in or not.

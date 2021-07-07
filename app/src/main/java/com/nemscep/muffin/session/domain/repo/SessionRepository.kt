@@ -1,5 +1,7 @@
 package com.nemscep.muffin.session.domain.repo
 
+import com.nemscep.burrito.CompositeFailure
+import com.nemscep.burrito.Outcome
 import com.nemscep.muffin.session.domain.entities.SessionState
 import kotlinx.coroutines.flow.Flow
 
@@ -15,7 +17,7 @@ interface SessionRepository {
     /**
      * Opens new session.
      */
-    suspend fun openSession()
+    suspend fun openSession(): Outcome<Unit, CompositeFailure<Nothing>>
 
     /**
      * Closes current session.

@@ -1,5 +1,7 @@
 package com.nemscep.muffin.profile.data.repo
 
+import com.nemscep.burrito.CompositeFailure
+import com.nemscep.burrito.Outcome
 import com.nemscep.muffin.profile.domain.entities.Profile
 import com.nemscep.muffin.profile.domain.repo.ProfileRepository
 import kotlinx.coroutines.flow.Flow
@@ -17,7 +19,7 @@ class ProfileRepositoryImpl() : ProfileRepository {
         TODO("Not yet implemented")
     }
 
-    override fun setProfile(profile: Profile) {
+    override suspend fun setProfile(profile: Profile): Outcome<Unit, CompositeFailure<Nothing>> {
         TODO("Not yet implemented")
     }
 }
