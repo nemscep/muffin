@@ -59,6 +59,10 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    // Burrito
+    implementation 'com.github.nemscep:burrito:v1.0.0-alpha.1'
 
     // Moshi
     implementation "com.squareup.moshi:moshi:$moshi_version"
