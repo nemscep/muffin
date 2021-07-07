@@ -1,12 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/three_grid_unit">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
+        style="?textAppearanceHeadline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/setup" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            app:counterEnabled="false"
+            app:counterMaxLength="20"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperTextEnabled="true"
+            app:startIconContentDescription="@string/name"
+            app:startIconDrawable="@drawable/ic_account">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilIncome"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/monthly_income"
+            app:counterEnabled="false"
+            app:counterMaxLength="20"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperTextEnabled="true"
+            app:startIconContentDescription="@string/monthly_income"
+            app:startIconDrawable="@drawable/ic_overview">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCurrency"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/currency"
+            app:counterEnabled="false"
+            app:counterMaxLength="20"
+            app:endIconMode="dropdown_menu"
+            app:errorEnabled="true"
+            app:helperTextEnabled="false"
+            app:startIconContentDescription="@string/currency"
+            app:startIconDrawable="@drawable/ic_money">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/currency"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPin"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/pin"
+            app:counterEnabled="false"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true"
+            app:helperText="@string/pin_helper"
+            app:helperTextEnabled="true"
+            app:startIconContentDescription="@string/pin"
+            app:startIconDrawable="@drawable/ic_lock">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/three_grid_unit" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/finish" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/three_grid_unit" />
+    </LinearLayout>
 
 </FrameLayout>

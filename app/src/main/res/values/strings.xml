@@ -10,4 +10,10 @@
     <string name="search">Search</string>
     <string name="logout">Logout</string>
     <string name="setup">Setup</string>
+    <string name="name">Name</string>
+    <string name="monthly_income">Monthly income</string>
+    <string name="currency">Currency</string>
+    <string name="pin">Pin</string>
+    <string name="pin_helper">This pin will be used as session authenticator</string>
+    <string name="finish">Finish</string>
 </resources>
