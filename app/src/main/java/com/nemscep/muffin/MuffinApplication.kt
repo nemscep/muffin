@@ -10,14 +10,10 @@ class MuffinApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        startKoin{
+        startKoin {
             androidLogger()
             androidContext(this@MuffinApplication)
-            modules(modules)
+            modules(appModules)
         }
     }
 }
-
-val modules = listOf<Module>(
-    appModule
-)

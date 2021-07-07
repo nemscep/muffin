@@ -1,7 +1,10 @@
 package com.nemscep.muffin
 
-import org.koin.dsl.module
+import com.nemscep.muffin.session.sessionModule
 
-val appModule = module {
-
-}
+/**
+ * Koin app module dependencies.
+ */
+val appModules = listOf(
+    sessionModule
+)
