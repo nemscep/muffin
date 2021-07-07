@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.nemscep.muffin.R.layout
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SplashFragment : Fragment(layout.fragment_splash) {
 
