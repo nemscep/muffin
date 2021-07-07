@@ -4,14 +4,22 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.nemscep.muffin.R
 import com.nemscep.muffin.R.layout
 
 class SplashFragment : Fragment(layout.fragment_splash) {
 
+    private val viewModel by viewModel<SplashViewModel>()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        findNavController().navigate(R.id.action_global_dashboardFragment)
+        viewModel.isLoggedIn.observe(viewLifecycleOwner) { handleLoggedInState(it) }
+    }
+
+    private fun handleLoggedInState(state: Boolean) {
+        when (state) {
+            false -> SplashFragmentDirections.actionGlobalAuthFragment()
+            true -> SplashFragmentDirections.actionGlobalLoginFragment()
+        }.also { destinationId -> findNavController().navigate(destinationId) }
     }
 }

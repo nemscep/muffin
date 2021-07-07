@@ -24,4 +24,20 @@
         app:launchSingleTop="true"
         app:popUpTo="@id/main_graph"
         app:popUpToInclusive="false" />
+    <action
+        android:id="@+id/action_global_authFragment"
+        app:destination="@id/authFragment"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/main_graph"
+        app:popUpToInclusive="false" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.nemscep.muffin.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <action
+        android:id="@+id/action_global_loginFragment"
+        app:destination="@id/loginFragment"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/main_graph" />
 </navigation>
