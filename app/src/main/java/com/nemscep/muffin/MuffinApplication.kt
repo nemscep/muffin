@@ -11,7 +11,6 @@ class MuffinApplication : Application() {
         super.onCreate()
 
         startKoin {
-            androidLogger()
             androidContext(this@MuffinApplication)
             modules(appModules)
         }
