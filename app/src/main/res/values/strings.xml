@@ -16,4 +16,6 @@
     <string name="pin">Pin</string>
     <string name="pin_helper">This pin will be used as session authenticator</string>
     <string name="finish">Finish</string>
+    <string name="welcome_to_muffin">Welcome to Muffin!</string>
+    <string name="next">Next</string>
 </resources>

@@ -31,13 +31,22 @@
         app:popUpTo="@id/main_graph"
         app:popUpToInclusive="false" />
     <fragment
-        android:id="@+id/loginFragment"
+        android:id="@+id/setupFragment"
         android:name="com.nemscep.muffin.setup.SetupFragment"
-        android:label="fragment_login"
+        android:label="fragment_setup"
         tools:layout="@layout/fragment_setup" />
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.nemscep.muffin.OnboardingFragment"
+        android:label="fragment_onboarding"
+        tools:layout="@layout/fragment_onboarding">
+        <action
+            android:id="@+id/action_onboardingFragment_to_setupFragment"
+            app:destination="@id/setupFragment" />
+    </fragment>
     <action
-        android:id="@+id/action_global_loginFragment"
-        app:destination="@id/loginFragment"
+        android:id="@+id/action_global_onboardingFragment"
+        app:destination="@id/onboardingFragment"
         app:launchSingleTop="true"
         app:popUpTo="@id/main_graph" />
 </navigation>
