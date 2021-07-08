@@ -24,6 +24,7 @@ class SetupViewModel(
         name: String,
         monthlyIncome: Int,
         currency: Currency,
+        currentBalance: Float,
         pin: Int
     ) {
         viewModelScope.launch {
@@ -32,7 +33,7 @@ class SetupViewModel(
                 monthlyIncome = monthlyIncome,
                 currency = currency
             )
-            when (setupProfile(profile, pin)) {
+            when (setupProfile(profile, pin, currentBalance)) {
                 is Success -> _events.value = NavigateToDashboard
                 is Failure -> _events.value = SetupFailed
             }

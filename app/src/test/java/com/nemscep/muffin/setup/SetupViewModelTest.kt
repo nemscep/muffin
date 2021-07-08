@@ -35,50 +35,50 @@ class SetupViewModelTest {
     fun `when setup profile is called, use case is invoked properly`() =
         testCoroutineRule.runBlockingTest {
             // Given
-            coEvery { setupProfile(PROFILE, PIN) } returns Success(Unit)
+            coEvery { setupProfile(PROFILE, PIN, CURRENT_BALANCE) } returns Success(Unit)
             `given tested use case`()
 
             // When
-            tested.setupProfile("Test", 1000, EUR, 1234)
+            tested.setupProfile("Test", 1000, EUR, CURRENT_BALANCE, 1234)
 
             // Then
-            coVerify(exactly = 1) { setupProfile(PROFILE, PIN) }
+            coVerify(exactly = 1) { setupProfile(PROFILE, PIN, CURRENT_BALANCE) }
         }
 
     @Test
     fun `when setup profile is finished successfully, navigation event is emitted properly`() =
         testCoroutineRule.runBlockingTest {
             // Given
-            coEvery { setupProfile(PROFILE, PIN) } returns Success(Unit)
+            coEvery { setupProfile(PROFILE, PIN, CURRENT_BALANCE) } returns Success(Unit)
             `given tested use case`()
 
             // When
             tested.events.observeForever(eventsObserver)
-            tested.setupProfile("Test", 1000, EUR, 1234)
+            tested.setupProfile("Test", 1000, EUR, CURRENT_BALANCE, 1234)
 
             // Then
             verifySequence {
                 eventsObserver.onChanged(NavigateToDashboard)
             }
-            coVerify(exactly = 1) { setupProfile(PROFILE, PIN) }
+            coVerify(exactly = 1) { setupProfile(PROFILE, PIN, CURRENT_BALANCE) }
         }
 
     @Test
     fun `when setup profile is finished unsuccessfully, error event is emitted properly`() =
         testCoroutineRule.runBlockingTest {
             // Given
-            coEvery { setupProfile(PROFILE, PIN) } returns Failure(Unspecified())
+            coEvery { setupProfile(PROFILE, PIN, CURRENT_BALANCE) } returns Failure(Unspecified())
             `given tested use case`()
 
             // When
             tested.events.observeForever(eventsObserver)
-            tested.setupProfile("Test", 1000, EUR, 1234)
+            tested.setupProfile("Test", 1000, EUR, CURRENT_BALANCE, 1234)
 
             // Then
             verifySequence {
                 eventsObserver.onChanged(SetupFailed)
             }
-            coVerify(exactly = 1) { setupProfile(PROFILE, PIN) }
+            coVerify(exactly = 1) { setupProfile(PROFILE, PIN, CURRENT_BALANCE) }
         }
 
     private fun `given tested use case`() {
@@ -92,3 +92,4 @@ private val PROFILE = Profile(
     currency = EUR,
 )
 private const val PIN = 1234
+private const val CURRENT_BALANCE = 1000f

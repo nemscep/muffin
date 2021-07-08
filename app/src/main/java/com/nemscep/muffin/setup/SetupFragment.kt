@@ -66,10 +66,14 @@ class SetupFragment : Fragment(R.layout.fragment_setup) {
         tilPin.editText?.addTextChangedListener {
             tilPin.error = ""
         }
+        tilCurrentBalance.editText?.addTextChangedListener {
+            tilCurrentBalance.error = ""
+        }
 
         btnFinishSetup.setOnClickListener {
             val nameText = tilName.editText?.text.toString()
             val incomeText = tilIncome.editText?.text.toString()
+            val currentBalanceText = tilCurrentBalance.editText?.text.toString()
             val pinText = tilPin.editText?.text.toString()
             val currencyText = (tilCurrency.editText as? AutoCompleteTextView)?.text.toString()
             if (!missingRequiredFields()) {
@@ -77,6 +81,7 @@ class SetupFragment : Fragment(R.layout.fragment_setup) {
                     name = nameText,
                     monthlyIncome = incomeText.toInt(),
                     currency = currencyText.toCurrencyDomain(),
+                    currentBalance = currentBalanceText.toFloat(),
                     pin = pinText.toInt()
                 )
             } else {
@@ -91,6 +96,7 @@ class SetupFragment : Fragment(R.layout.fragment_setup) {
     private fun FragmentSetupBinding.missingRequiredFields() =
         tilName.editText?.text.isNullOrBlank() || tilPin.editText?.text.isNullOrBlank()
                 || tilCurrency.editText?.text.isNullOrBlank() || tilCurrency.editText?.text.isNullOrBlank()
+                || tilCurrentBalance.editText?.text.isNullOrBlank()
 
     private fun FragmentSetupBinding.setupCurrencyDropdown() {
         val adapter = ArrayAdapter(requireContext(), R.layout.item_currency, currencies)
