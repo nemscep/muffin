@@ -34,7 +34,7 @@ class SetupProfileTest {
             `given tested use case`()
 
             // When
-            val outcome = tested(PROFILE)
+            val outcome = tested(profile = PROFILE, pin = 1234)
 
             // Then
             outcome shouldEqual Success(Unit)
@@ -50,7 +50,7 @@ class SetupProfileTest {
             `given tested use case`()
 
             // When
-            val outcome = tested(PROFILE)
+            val outcome = tested(profile = PROFILE, pin = 1234)
 
             // Then
             outcome shouldEqual Failure(Unspecified())
@@ -66,7 +66,7 @@ class SetupProfileTest {
             `given tested use case`()
 
             // When
-            val outcome = tested(PROFILE)
+            val outcome = tested(profile = PROFILE, pin = 1234)
 
             // Then
             outcome shouldEqual Failure(Unspecified())
@@ -82,7 +82,7 @@ class SetupProfileTest {
             `given tested use case`()
 
             // When
-            val outcome = tested(PROFILE)
+            val outcome = tested(profile = PROFILE, pin = 1234)
 
             // Then
             outcome shouldEqual Failure(Unspecified())
@@ -100,6 +100,5 @@ class SetupProfileTest {
 private val PROFILE = Profile(
     name = "Test",
     monthlyIncome = 1000,
-    currency = EUR,
-    pin = 1234
+    currency = EUR
 )

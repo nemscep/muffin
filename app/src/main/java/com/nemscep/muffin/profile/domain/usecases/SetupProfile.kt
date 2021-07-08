@@ -17,7 +17,7 @@ class SetupProfile(
     private val sessionRepository: SessionRepository,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
-    suspend operator fun invoke(profile: Profile): Outcome<Unit, CompositeFailure<Any>> =
+    suspend operator fun invoke(profile: Profile, pin: Int): Outcome<Unit, CompositeFailure<Any>> =
         asyncAll(
             dispatcher = ioDispatcher,
             { profileRepository.setProfile(profile) },

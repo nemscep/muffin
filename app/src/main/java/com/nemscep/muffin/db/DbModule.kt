@@ -9,7 +9,7 @@ val dbModule = module {
         Room.databaseBuilder(
             androidApplication(),
             MuffinDatabase::class.java,
-            "Muffin database"
+            "muffin-db"
         ).build()
     }
 }

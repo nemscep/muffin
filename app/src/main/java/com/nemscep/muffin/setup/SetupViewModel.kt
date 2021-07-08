@@ -30,10 +30,9 @@ class SetupViewModel(
             val profile = Profile(
                 name = name,
                 monthlyIncome = monthlyIncome,
-                currency = currency,
-                pin = pin
+                currency = currency
             )
-            when (setupProfile(profile)) {
+            when (setupProfile(profile, pin)) {
                 is Success -> _events.value = NavigateToDashboard
                 is Failure -> _events.value = SetupFailed
             }

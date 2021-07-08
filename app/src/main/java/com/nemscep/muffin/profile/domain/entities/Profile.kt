@@ -6,8 +6,7 @@ package com.nemscep.muffin.profile.domain.entities
 data class Profile(
     val name: String,
     val monthlyIncome: Int,
-    val currency: Currency,
-    val pin: Int
+    val currency: Currency
 )
 
 enum class Currency {

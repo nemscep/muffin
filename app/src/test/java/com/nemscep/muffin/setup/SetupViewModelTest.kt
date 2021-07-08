@@ -35,21 +35,21 @@ class SetupViewModelTest {
     fun `when setup profile is called, use case is invoked properly`() =
         testCoroutineRule.runBlockingTest {
             // Given
-            coEvery { setupProfile(PROFILE) } returns Success(Unit)
+            coEvery { setupProfile(PROFILE, PIN) } returns Success(Unit)
             `given tested use case`()
 
             // When
             tested.setupProfile("Test", 1000, EUR, 1234)
 
             // Then
-            coVerify(exactly = 1) { setupProfile(PROFILE) }
+            coVerify(exactly = 1) { setupProfile(PROFILE, PIN) }
         }
 
     @Test
     fun `when setup profile is finished successfully, navigation event is emitted properly`() =
         testCoroutineRule.runBlockingTest {
             // Given
-            coEvery { setupProfile(PROFILE) } returns Success(Unit)
+            coEvery { setupProfile(PROFILE, PIN) } returns Success(Unit)
             `given tested use case`()
 
             // When
@@ -60,14 +60,14 @@ class SetupViewModelTest {
             verifySequence {
                 eventsObserver.onChanged(NavigateToDashboard)
             }
-            coVerify(exactly = 1) { setupProfile(PROFILE) }
+            coVerify(exactly = 1) { setupProfile(PROFILE, PIN) }
         }
 
     @Test
     fun `when setup profile is finished unsuccessfully, error event is emitted properly`() =
         testCoroutineRule.runBlockingTest {
             // Given
-            coEvery { setupProfile(PROFILE) } returns Failure(Unspecified())
+            coEvery { setupProfile(PROFILE, PIN) } returns Failure(Unspecified())
             `given tested use case`()
 
             // When
@@ -78,7 +78,7 @@ class SetupViewModelTest {
             verifySequence {
                 eventsObserver.onChanged(SetupFailed)
             }
-            coVerify(exactly = 1) { setupProfile(PROFILE) }
+            coVerify(exactly = 1) { setupProfile(PROFILE, PIN) }
         }
 
     private fun `given tested use case`() {
@@ -90,5 +90,5 @@ private val PROFILE = Profile(
     name = "Test",
     monthlyIncome = 1000,
     currency = EUR,
-    pin = 1234
 )
+private const val PIN = 1234

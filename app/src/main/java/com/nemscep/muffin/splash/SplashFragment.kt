@@ -19,8 +19,8 @@ class SplashFragment : Fragment(layout.fragment_splash) {
 
     private fun handleLoggedInState(state: Boolean) {
         when (state) {
-            false -> SplashFragmentDirections.actionGlobalAuthFragment()
-            true -> SplashFragmentDirections.actionGlobalOnboardingFragment()
+            true -> SplashFragmentDirections.actionGlobalAuthFragment()
+            false -> SplashFragmentDirections.actionGlobalOnboardingFragment()
         }.also { destinationId -> findNavController().navigate(destinationId) }
     }
 }
