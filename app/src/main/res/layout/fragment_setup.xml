@@ -104,6 +104,7 @@
             android:layout_height="@dimen/three_grid_unit" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFinishSetup"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
