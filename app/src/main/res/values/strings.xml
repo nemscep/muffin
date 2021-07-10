@@ -20,4 +20,6 @@
     <string name="next">Next</string>
     <string name="field_required">This field is required!</string>
     <string name="current_balance">Current balance</string>
+    <string name="authenticate">Authenticate</string>
+    <string name="incorrect_pin">Pin you entered is incorrect!</string>
 </resources>

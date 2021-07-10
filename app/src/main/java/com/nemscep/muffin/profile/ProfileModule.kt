@@ -13,6 +13,12 @@ val profileModule = module {
     single<ProfileDao> { get<MuffinDatabase>().profileDao() }
     single<ProfileRepository> { ProfileRepositoryImpl(profileDao = get()) }
     factory { IsLoggedIn(profileRepository = get()) }
-    factory { SetupProfile(profileRepository = get(), sessionRepository = get()) }
+    factory {
+        SetupProfile(
+            profileRepository = get(),
+            sessionRepository = get(),
+            authRepository = get()
+        )
+    }
     factory { GetProfile(profileRepository = get()) }
 }

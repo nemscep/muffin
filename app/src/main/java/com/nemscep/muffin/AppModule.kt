@@ -1,5 +1,7 @@
 package com.nemscep.muffin
 
+import com.nemscep.muffin.auth.authModule
+import com.nemscep.muffin.datastore.dataStoreModule
 import com.nemscep.muffin.db.dbModule
 import com.nemscep.muffin.overview.overviewModule
 import com.nemscep.muffin.profile.profileModule
@@ -17,5 +19,7 @@ val appModules = listOf<Module>(
     profileModule,
     setupModule,
     dbModule,
-    overviewModule
+    overviewModule,
+    authModule,
+    dataStoreModule
 )

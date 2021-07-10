@@ -11,7 +11,7 @@
         tools:layout="@layout/fragment_splash" />
     <fragment
         android:id="@+id/authFragment"
-        android:name="com.nemscep.muffin.auth.AuthFragment"
+        android:name="com.nemscep.muffin.auth.ui.AuthFragment"
         android:label="@string/authentication"
         tools:layout="@layout/fragment_auth" />
     <fragment

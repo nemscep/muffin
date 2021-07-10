@@ -4,6 +4,7 @@ import com.nemscep.burrito.CompositeFailure.Network.Unspecified
 import com.nemscep.burrito.CompositeFailure.NoInternet
 import com.nemscep.burrito.Outcome.Failure
 import com.nemscep.burrito.Outcome.Success
+import com.nemscep.muffin.auth.domain.repo.AuthRepository
 import com.nemscep.muffin.common.TestCoroutineRule
 import com.nemscep.muffin.common.runBlockingTest
 import com.nemscep.muffin.profile.domain.entities.Currency.EUR
@@ -19,6 +20,7 @@ import org.junit.Test
 class SetupProfileTest {
     private val profileRepository: ProfileRepository = mockk(relaxed = true)
     private val sessionRepository: SessionRepository = mockk(relaxed = true)
+    private val authRepository: AuthRepository = mockk(relaxed = true)
     private lateinit var tested: SetupProfile
 
     @get: Rule
@@ -92,7 +94,8 @@ class SetupProfileTest {
         tested = SetupProfile(
             profileRepository = profileRepository,
             sessionRepository = sessionRepository,
-            ioDispatcher = testCoroutineRule.testDispatcher
+            ioDispatcher = testCoroutineRule.testDispatcher,
+            authRepository = authRepository
         )
     }
 }
