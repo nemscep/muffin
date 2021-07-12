@@ -21,7 +21,7 @@ class AddBalanceTest {
         // Given
         val expected = Success(Unit)
         coEvery { balancesRepository.addBalance(MAIN_BALANCE) } returns expected
-        tested = AddBalance(balancesRepository = balancesRepository)
+        `given tested use case`()
 
         // When
         val outcome = tested(MAIN_BALANCE)
@@ -35,13 +35,17 @@ class AddBalanceTest {
         // Given
         val expected = Failure(Unspecified(error = Exception()))
         coEvery { balancesRepository.addBalance(MAIN_BALANCE) } returns expected
-        tested = AddBalance(balancesRepository = balancesRepository)
+        `given tested use case`()
 
         // When
         val outcome = tested(MAIN_BALANCE)
 
         // Then
         outcome shouldEqual expected
+    }
+
+    private fun `given tested use case`() {
+        tested = AddBalance(balancesRepository = balancesRepository)
     }
 }
 
