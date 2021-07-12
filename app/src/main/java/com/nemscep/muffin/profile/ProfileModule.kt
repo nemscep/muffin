@@ -17,7 +17,8 @@ val profileModule = module {
         SetupProfile(
             profileRepository = get(),
             sessionRepository = get(),
-            authRepository = get()
+            authRepository = get(),
+            addBalance = get()
         )
     }
     factory { GetProfile(profileRepository = get()) }
