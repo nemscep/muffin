@@ -15,7 +15,7 @@ import com.nemscep.muffin.profile.domain.entities.Currency
 data class BalanceEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val value: Int,
+    val value: Float,
     val currency: Currency,
     val name: String? = null,
     val type: BalanceEntityType

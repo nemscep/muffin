@@ -50,4 +50,4 @@ class DeleteBalanceTest {
     }
 }
 
-private val MAIN_BALANCE = MainBalance(value = 1000, currency = EUR)
+private val MAIN_BALANCE = MainBalance(value = 1000f, currency = EUR)
