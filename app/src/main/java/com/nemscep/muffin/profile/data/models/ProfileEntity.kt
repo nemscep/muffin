@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
-import androidx.room.TypeConverters
 import com.nemscep.muffin.profile.domain.entities.Currency
 import com.nemscep.muffin.profile.domain.entities.Currency.EUR
 import com.nemscep.muffin.profile.domain.entities.Currency.RSD
@@ -13,7 +12,6 @@ import com.nemscep.muffin.profile.domain.entities.Currency.US_DOLLAR
 import com.nemscep.muffin.profile.domain.entities.Profile
 
 @Entity(tableName = ProfileEntity.TABLE_NAME)
-@TypeConverters(CurrencyConverter::class)
 data class ProfileEntity(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Long = 0,
     @ColumnInfo(name = "name")
