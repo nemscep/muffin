@@ -17,4 +17,10 @@
         android:label="@string/balance_details"
         tools:layout="@layout/fragment_balance_details" />
 
+    <activity
+        android:id="@+id/editBalancesActivity"
+        android:name="com.nemscep.muffin.balances.ui.EditBalancesActivity"
+        android:label="@string/edit_balances"
+        tools:layout="@layout/activity_edit_balances" />
+
 </navigation>

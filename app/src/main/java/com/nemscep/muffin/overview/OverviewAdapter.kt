@@ -10,10 +10,11 @@ import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.SavingsBalanceUiM
 import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.SpecificBalanceUiModel
 import com.nemscep.muffin.overview.OverviewItem.BalancesHeader
 
-class OverviewAdapter : ListAdapter<OverviewItem, BalanceViewHolder>(OverviewDiffUtil) {
+class OverviewAdapter(private val onEditBalances: () -> Unit) :
+    ListAdapter<OverviewItem, BalanceViewHolder>(OverviewDiffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BalanceViewHolder =
         when (viewType) {
-            BALANCE_HEADER -> BalancesHeaderViewHolder.create(parent, {})
+            BALANCE_HEADER -> BalancesHeaderViewHolder.create(parent, onEditBalances)
             MAIN_BALANCE -> BalanceItemViewHolder.create(parent, {})
             SAVINGS_BALANCE -> BalanceItemViewHolder.create(parent, {})
             SPECIFIC_BALANCE -> BalanceItemViewHolder.create(parent, {})

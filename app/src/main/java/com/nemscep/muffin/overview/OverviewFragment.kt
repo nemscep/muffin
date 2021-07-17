@@ -3,6 +3,8 @@ package com.nemscep.muffin.overview
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.nemscep.muffin.R
 import com.nemscep.muffin.R.layout
 import com.nemscep.muffin.databinding.FragmentOverviewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -24,7 +26,9 @@ class OverviewFragment : Fragment(layout.fragment_overview) {
     }
 
     private fun FragmentOverviewBinding.setupViews() {
-        overviewAdapter = OverviewAdapter()
+        overviewAdapter = OverviewAdapter(onEditBalances = {
+            findNavController().navigate(R.id.editBalancesActivity)
+        })
         rvOverview.adapter = overviewAdapter
     }
 

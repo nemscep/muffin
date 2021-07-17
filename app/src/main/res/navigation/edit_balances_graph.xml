@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/edit_balances_graph"
+    app:startDestination="@id/editBalancesFragment">
+
+    <fragment
+        android:id="@+id/editBalancesFragment"
+        android:name="com.nemscep.muffin.EditBalancesFragment"
+        android:label="@string/edit_balances"
+        tools:layout="@layout/fragment_edit_balances" />
+    <action
+        android:id="@+id/action_global_editBalancesFragment"
+        app:destination="@id/editBalancesFragment"
+        app:launchSingleTop="true"
+        app:popUpTo="@id/edit_balances_graph" />
+</navigation>
