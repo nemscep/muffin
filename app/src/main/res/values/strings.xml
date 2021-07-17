@@ -22,4 +22,8 @@
     <string name="current_balance">Current balance</string>
     <string name="authenticate">Authenticate</string>
     <string name="incorrect_pin">Pin you entered is incorrect!</string>
+    <string name="my_balances">My balances</string>
+    <string name="main_balance">Main balance</string>
+    <string name="savings_balance">Savings balance</string>
+    <string name="edit_balances">Edit balances</string>
 </resources>

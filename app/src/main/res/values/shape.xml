@@ -4,7 +4,10 @@
     <style name="ShapeAppearance.Muffin.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent"></style>
 
     <!--Shape Appearance for medium components like cards, alert dialogs-->
-    <style name="ShapeAppearance.Muffin.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent"></style>
+    <style name="ShapeAppearance.Muffin.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerRadius">@dimen/two_grid_unit</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
 
     <!--Shape Appearance for large components like side and bottom navigation drawers-->
     <style name="ShapeAppearance.Muffin.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent"></style>

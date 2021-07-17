@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/one_grid_unit">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvBalancesHeader"
+        style="?textAppearanceSubtitle2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/one_grid_unit"
+        android:layout_weight="1"
+        android:text="@string/my_balances" />
+
+    <ImageView
+        android:id="@+id/btnEditBalances"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="@string/edit_balances"
+        app:srcCompat="@drawable/ic_edit"
+        app:tint="?colorPrimary" />
+</LinearLayout>
+

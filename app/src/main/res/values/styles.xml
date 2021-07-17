@@ -5,4 +5,8 @@
         <item name="android:background">?colorPrimary</item>
     </style>
 
+    <style name="Widget.Muffin.MaterialCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">?shapeAppearanceMediumComponent</item>
+    </style>
+
 </resources>

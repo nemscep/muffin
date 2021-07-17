@@ -3,4 +3,5 @@
     <dimen name="three_grid_unit">24dp</dimen>
     <dimen name="one_grid_unit">8dp</dimen>
     <dimen name="two_grid_unit">16dp</dimen>
+    <dimen name="half_grid_unit">4dp</dimen>
 </resources>

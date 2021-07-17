@@ -31,6 +31,7 @@
 
         <!-- Toolbar -->
         <item name="toolbarStyle">@style/Widget.Muffin.Toolbar</item>
+        <item name="materialCardViewStyle">@style/Widget.Muffin.MaterialCardView</item>
 
         <!-- Typography -->
         <item name="textAppearanceHeadline1">@style/TextAppearance.Muffin.Headline1</item>
