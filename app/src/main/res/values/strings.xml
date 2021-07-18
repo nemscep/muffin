@@ -31,4 +31,6 @@
     <string name="show_in_overview">Show in overview</string>
     <string name="delete_balance">Delete balance</string>
     <string name="edit_balance">Edit balance</string>
+    <string name="my_transactions">My transactions</string>
+    <string name="no_transactions">No transactions</string>
 </resources>

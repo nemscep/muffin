@@ -4,6 +4,7 @@ import com.nemscep.muffin.auth.authModule
 import com.nemscep.muffin.balances.balancesModule
 import com.nemscep.muffin.datastore.dataStoreModule
 import com.nemscep.muffin.db.dbModule
+import com.nemscep.muffin.history.historyModule
 import com.nemscep.muffin.overview.overviewModule
 import com.nemscep.muffin.profile.profileModule
 import com.nemscep.muffin.session.sessionModule
@@ -23,5 +24,6 @@ val appModules = listOf<Module>(
     overviewModule,
     authModule,
     dataStoreModule,
-    balancesModule
+    balancesModule,
+    historyModule
 )
