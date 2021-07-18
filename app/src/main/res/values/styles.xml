@@ -7,6 +7,8 @@
 
     <style name="Widget.Muffin.MaterialCardView" parent="Widget.MaterialComponents.CardView">
         <item name="shapeAppearanceOverlay">?shapeAppearanceMediumComponent</item>
+        <item name="cardElevation">@dimen/one_grid_unit</item>
+        <item name="cardCornerRadius">@dimen/one_grid_unit</item>
     </style>
 
     <style name="Widget.Muffin.Switch" parent="Widget.MaterialComponents.CompoundButton.Switch">
