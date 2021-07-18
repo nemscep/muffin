@@ -33,4 +33,5 @@
     <string name="edit_balance">Edit balance</string>
     <string name="my_transactions">My transactions</string>
     <string name="no_transactions">No transactions</string>
+    <string name="topup">Topup</string>
 </resources>

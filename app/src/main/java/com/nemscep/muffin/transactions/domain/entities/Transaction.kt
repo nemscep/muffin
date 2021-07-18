@@ -9,16 +9,19 @@ import java.util.Date
  * - Expense - where user subtracts value from some balance
  */
 sealed class Transaction {
+    abstract val description: String
     abstract val amount: Float
     abstract val date: Date
 
     data class Expense(
+        override val description: String,
         override val amount: Float,
         override val date: Date,
         val expenseCategory: ExpenseCategory
     ) : Transaction()
 
     data class Topup(
+        override val description: String,
         override val amount: Float,
         override val date: Date
     ) : Transaction()

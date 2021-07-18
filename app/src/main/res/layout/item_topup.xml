@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/two_grid_unit">
+
+        <TextView
+            android:id="@+id/tvTopupTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?textAppearanceHeadline5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/topup" />
+
+        <TextView
+            android:id="@+id/tvTopupAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?textAppearanceHeadline4"
+            app:layout_constraintStart_toStartOf="@id/tvTopupTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvTopupTitle"
+            tools:text="2500e" />
+
+        <TextView
+            android:id="@+id/tvTopupTimestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?textAppearanceBody1"
+            app:layout_constraintStart_toStartOf="@id/tvTopupAmount"
+            app:layout_constraintTop_toBottomOf="@id/tvTopupAmount"
+            tools:text="24/07/2021" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipTopup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/topup"
+            app:chipIcon="@drawable/ic_overview"
+            app:chipIconTint="?colorOnSurface"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

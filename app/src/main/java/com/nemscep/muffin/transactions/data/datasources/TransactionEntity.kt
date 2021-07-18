@@ -22,7 +22,8 @@ data class TransactionEntity(
     val type: TransactionType,
     val amount: Float,
     val expenseCategory: ExpenseCategory? = null,
-    val date: Date
+    val date: Date,
+    val description: String
 ) {
     companion object {
         const val TABLE_NAME = "transactions"
@@ -34,18 +35,25 @@ fun Transaction.toEntity(): TransactionEntity = when (this) {
         type = EXPENSE,
         amount = amount,
         expenseCategory = expenseCategory,
-        date = date
+        date = date,
+        description = description
     )
     is Topup -> TransactionEntity(
         type = TOPUP,
         amount = amount,
         date = date,
+        description = description
     )
 }
 
 fun TransactionEntity.toDomain(): Transaction = when (type) {
-    EXPENSE -> Expense(amount = amount, date = date, expenseCategory = expenseCategory!!)
-    TOPUP -> Topup(amount = amount, date)
+    EXPENSE -> Expense(
+        amount = amount,
+        date = date,
+        expenseCategory = expenseCategory!!,
+        description = description
+    )
+    TOPUP -> Topup(amount = amount, date = date, description = description)
 }
 
 enum class TransactionType { EXPENSE, TOPUP }

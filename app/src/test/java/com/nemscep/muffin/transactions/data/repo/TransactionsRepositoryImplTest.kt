@@ -69,8 +69,8 @@ class TransactionsRepositoryImplTest {
 }
 
 private val DATE = Date(1)
-private val EXPENSE = Expense(amount = 2f, date = DATE, expenseCategory = OTHER)
-private val TOPUP = Topup(amount = 2f, date = DATE)
+private val EXPENSE = Expense(amount = 2f, date = DATE, expenseCategory = OTHER, description = "")
+private val TOPUP = Topup(amount = 2f, date = DATE, description = "")
 
 private val TRANSACTIONS = listOf(EXPENSE, TOPUP)
 
@@ -78,11 +78,13 @@ private val EXPENSE_ENTITY = TransactionEntity(
     type = TransactionType.EXPENSE,
     amount = 2f,
     expenseCategory = OTHER,
-    date = DATE
+    date = DATE,
+    description = ""
 )
 private val TOPUP_ENTITY = TransactionEntity(
     type = TransactionType.TOPUP,
     amount = 2f,
-    date = DATE
+    date = DATE,
+    description = ""
 )
 private val TRANSACTION_ENTITIES = listOf(EXPENSE_ENTITY, TOPUP_ENTITY)
