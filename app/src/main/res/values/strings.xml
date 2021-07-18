@@ -34,4 +34,6 @@
     <string name="my_transactions">My transactions</string>
     <string name="no_transactions">No transactions</string>
     <string name="topup">Topup</string>
+    <string name="track_expense">Track expense</string>
+    <string name="track_topup">Track topup</string>
 </resources>

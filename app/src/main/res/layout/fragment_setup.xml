@@ -70,7 +70,7 @@
             app:errorEnabled="true"
             app:helperTextEnabled="true"
             app:startIconContentDescription="@string/current_balance"
-            app:startIconDrawable="@drawable/ic_overview">
+            app:startIconDrawable="@drawable/ic_wallet">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"

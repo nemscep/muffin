@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Shape Appearance for small components like chips, buttons, text fields and FABs-->
-    <style name="ShapeAppearance.Muffin.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent"></style>
+    <style name="ShapeAppearance.Muffin.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerRadius">@dimen/one_grid_unit</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
 
     <!--Shape Appearance for medium components like cards, alert dialogs-->
     <style name="ShapeAppearance.Muffin.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
@@ -10,5 +13,8 @@
     </style>
 
     <!--Shape Appearance for large components like side and bottom navigation drawers-->
-    <style name="ShapeAppearance.Muffin.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent"></style>
+    <style name="ShapeAppearance.Muffin.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerRadius">@dimen/three_grid_unit</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
 </resources>

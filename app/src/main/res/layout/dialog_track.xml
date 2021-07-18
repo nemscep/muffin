@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/two_grid_unit"
     tools:context=".track.TrackBottomSheetDialog">
 
-    <TextView
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnTrackExpense"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/track" />
+        android:layout_height="wrap_content"
+        android:gravity="start|center_vertical"
+        android:text="@string/track_expense"
+        android:textAppearance="?textAppearanceBody1"
+        app:icon="@drawable/ic_cart"
+        app:iconPadding="@dimen/two_grid_unit" />
 
-</FrameLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnTrackTopup"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start|center_vertical"
+        android:text="@string/track_topup"
+        android:textAppearance="?textAppearanceBody1"
+        app:icon="@drawable/ic_wallet"
+        app:iconPadding="@dimen/two_grid_unit" />
+
+</LinearLayout>

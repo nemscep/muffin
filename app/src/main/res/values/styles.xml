@@ -15,4 +15,8 @@
 
     </style>
 
+    <style name="Widget.Muffin.BottomSheetDialog" parent="Widget.MaterialComponents.BottomSheet">
+
+    </style>
+
 </resources>
