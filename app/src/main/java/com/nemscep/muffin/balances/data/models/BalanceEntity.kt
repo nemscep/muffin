@@ -18,7 +18,8 @@ data class BalanceEntity(
     val value: Float,
     val currency: Currency,
     val name: String? = null,
-    val type: BalanceEntityType
+    val type: BalanceEntityType,
+    val isVisibleInOverview: Boolean
 ) {
     companion object {
         const val TABLE_NAME = "balance"
@@ -36,26 +37,45 @@ fun Balance.toEntity(): BalanceEntity = when (this) {
         value = value,
         currency = currency,
         type = MAIN,
-        id = id
+        id = id,
+        isVisibleInOverview = isVisibleInOverview
     )
     is SavingsBalance -> BalanceEntity(
         value = value,
         currency = currency,
         type = SAVINGS,
-        id = id
+        id = id,
+        isVisibleInOverview = isVisibleInOverview
     )
     is SpecificBalance -> BalanceEntity(
         value = value,
         currency = currency,
         name = name,
         type = SPECIFIC,
-        id = id
+        id = id,
+        isVisibleInOverview = isVisibleInOverview
     )
 }
 
 fun BalanceEntity.toDomain(): Balance = when (this.type) {
-    MAIN -> MainBalance(value = value, currency = currency, id = id)
-    SAVINGS -> SavingsBalance(value = value, currency = currency, id = id)
-    SPECIFIC -> SpecificBalance(value = value, name = name!!, currency = currency, id = id)
+    MAIN -> MainBalance(
+        value = value,
+        currency = currency,
+        id = id,
+        isVisibleInOverview = isVisibleInOverview
+    )
+    SAVINGS -> SavingsBalance(
+        value = value,
+        currency = currency,
+        id = id,
+        isVisibleInOverview = isVisibleInOverview
+    )
+    SPECIFIC -> SpecificBalance(
+        value = value,
+        name = name!!,
+        currency = currency,
+        id = id,
+        isVisibleInOverview = isVisibleInOverview
+    )
 }
 

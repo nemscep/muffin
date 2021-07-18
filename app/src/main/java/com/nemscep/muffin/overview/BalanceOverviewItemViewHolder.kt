@@ -3,14 +3,14 @@ package com.nemscep.muffin.overview
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.nemscep.muffin.R
-import com.nemscep.muffin.databinding.ItemBalanceBinding
+import com.nemscep.muffin.databinding.ItemBalanceOverviewBinding
 import com.nemscep.muffin.overview.OverviewItem.BalanceOverviewUiModel
 import com.nemscep.muffin.overview.OverviewItem.BalanceOverviewUiModel.MainBalanceOverviewUiModel
 import com.nemscep.muffin.overview.OverviewItem.BalanceOverviewUiModel.SavingsBalanceOverviewUiModel
 import com.nemscep.muffin.overview.OverviewItem.BalanceOverviewUiModel.SpecificBalanceOverviewUiModel
 
 data class BalanceOverviewItemViewHolder(
-    private val itemBalanceBinding: ItemBalanceBinding,
+    private val itemBalanceBinding: ItemBalanceOverviewBinding,
     private val openDetails: (String) -> Unit
 ) : OverviewViewHolder(itemBalanceBinding.root) {
 
@@ -31,7 +31,7 @@ data class BalanceOverviewItemViewHolder(
 
     companion object {
         fun create(parent: ViewGroup, openDetails: (String) -> Unit): OverviewViewHolder {
-            val binding = ItemBalanceBinding.inflate(
+            val binding = ItemBalanceOverviewBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

@@ -6,7 +6,9 @@ import com.nemscep.muffin.balances.domain.repo.BalancesRepository
 import com.nemscep.muffin.balances.domain.usecases.AddBalance
 import com.nemscep.muffin.balances.domain.usecases.DeleteBalance
 import com.nemscep.muffin.balances.domain.usecases.GetBalances
+import com.nemscep.muffin.balances.ui.EditBalancesViewModel
 import com.nemscep.muffin.db.MuffinDatabase
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val balancesModule = module {
@@ -15,4 +17,5 @@ val balancesModule = module {
     factory { GetBalances(balancesRepository = get()) }
     factory { AddBalance(balancesRepository = get()) }
     factory { DeleteBalance(balancesRepository = get()) }
+    viewModel { EditBalancesViewModel(deleteBalance = get(), getBalances = get()) }
 }

@@ -49,4 +49,5 @@ class AddBalanceTest {
     }
 }
 
-private val MAIN_BALANCE = MainBalance(value = 1000f, currency = EUR, id = 1)
+private val MAIN_BALANCE =
+    MainBalance(value = 1000f, currency = EUR, id = 1, isVisibleInOverview = true)

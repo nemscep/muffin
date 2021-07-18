@@ -149,7 +149,8 @@ class SetupProfileTest {
     }
 }
 
-private val MAIN_BALANCE = MainBalance(value = 2f, currency = EUR, id = 1)
+private val MAIN_BALANCE =
+    MainBalance(value = 2f, currency = EUR, id = 1, isVisibleInOverview = true)
 
 private val PROFILE = Profile(
     name = "Test",

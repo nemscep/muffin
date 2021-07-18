@@ -23,7 +23,11 @@ class OverviewViewModel(private val getBalances: GetBalances) : ViewModel() {
 
     private fun overviewItemsLiveData(): LiveData<List<OverviewItem>> = combine(
         flowOf(listOf(BalancesHeader)),
-        getBalances().map { balances -> balances.map { it.toOverviewUiModel() } },
+        getBalances().map { balances ->
+            balances
+                .filter { it.isVisibleInOverview }
+                .map { it.toOverviewUiModel() }
+        },
         flowOf(listOf(TransactionsOverviewHeader))
     ) { balancesHeader, balances, transactionsHeader -> balancesHeader + balances + transactionsHeader }.asLiveData()
 }

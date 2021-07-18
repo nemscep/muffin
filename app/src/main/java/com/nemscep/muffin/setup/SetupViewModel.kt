@@ -37,6 +37,7 @@ class SetupViewModel(
             val mainBalance = MainBalance(
                 value = currentBalance,
                 currency = currency,
+                isVisibleInOverview = true,
                 id = 0 // TODO(Figure out a better way)
             )
             when (setupProfile(profile, pin, mainBalance)) {

@@ -52,9 +52,9 @@ class OverviewViewModelTest {
 }
 
 private val BALANCES = listOf(
-    MainBalance(value = 2f, currency = EUR, id = 1),
-    SavingsBalance(value = 3f, currency = EUR, id = 2),
-    SpecificBalance(value = 2f, name = "Test", currency = EUR, id = 3)
+    MainBalance(value = 2f, currency = EUR, id = 1, isVisibleInOverview = true),
+    SavingsBalance(value = 3f, currency = EUR, id = 2, isVisibleInOverview = true),
+    SpecificBalance(value = 2f, name = "Test", currency = EUR, id = 3, isVisibleInOverview = true)
 )
 
 private val OVERVIEW_ITEMS = listOf(

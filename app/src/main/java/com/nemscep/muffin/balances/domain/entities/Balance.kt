@@ -17,17 +17,20 @@ sealed class Balance {
     abstract val id: Int
     abstract val value: Float
     abstract val currency: Currency
+    abstract val isVisibleInOverview: Boolean
 
     data class MainBalance(
         override val id: Int,
         override val value: Float,
-        override val currency: Currency
+        override val currency: Currency,
+        override val isVisibleInOverview: Boolean
     ) : Balance()
 
     data class SavingsBalance(
         override val id: Int,
         override val value: Float,
-        override val currency: Currency
+        override val currency: Currency,
+        override val isVisibleInOverview: Boolean
     ) : Balance()
 
     /**
@@ -37,6 +40,7 @@ sealed class Balance {
         override val id: Int,
         val name: String,
         override val value: Float,
-        override val currency: Currency
+        override val currency: Currency,
+        override val isVisibleInOverview: Boolean
     ) : Balance()
 }

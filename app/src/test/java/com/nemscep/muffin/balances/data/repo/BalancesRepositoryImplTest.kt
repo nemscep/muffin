@@ -162,10 +162,18 @@ class BalancesRepositoryImplTest {
     }
 }
 
-private val MAIN_BALANCE = MainBalance(value = 1000f, currency = EUR, id = 1)
-private val SAVINGS_BALANCE = SavingsBalance(value = 1000f, currency = EUR, id = 2)
+private val MAIN_BALANCE =
+    MainBalance(value = 1000f, currency = EUR, id = 1, isVisibleInOverview = true)
+private val SAVINGS_BALANCE =
+    SavingsBalance(value = 1000f, currency = EUR, id = 2, isVisibleInOverview = true)
 private val SPECIFIC_BALANCE =
-    SpecificBalance(name = "Allowance", value = 1000f, currency = EUR, id = 3)
+    SpecificBalance(
+        name = "Allowance",
+        value = 1000f,
+        currency = EUR,
+        id = 3,
+        isVisibleInOverview = true
+    )
 private val BALANCES = listOf(MAIN_BALANCE, SAVINGS_BALANCE, SPECIFIC_BALANCE)
 private val BALANCES_ENTITIES = listOf(
     MAIN_BALANCE.toEntity(),
