@@ -10,7 +10,8 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tbEditBalances"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize" />
+        android:layout_height="?actionBarSize"
+        app:menu="@menu/edit_balances_options" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/editActivityNavHost"

@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditBalancesFragment">
+    android:orientation="vertical"
+    tools:context=".balances.ui.EditBalancesFragment">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/edit_balances" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvMyBalances"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/one_grid_unit"
+            android:padding="@dimen/one_grid_unit"
+            android:text="@string/my_balances"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/one_grid_unit"
+            android:padding="@dimen/one_grid_unit"
+            android:text="@string/show_in_overview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvMyBalances" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBalancesList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvMyBalances" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

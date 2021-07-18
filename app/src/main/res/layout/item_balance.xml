@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/one_grid_unit">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/three_grid_unit">
+
+        <TextView
+            android:id="@+id/tvBalanceName"
+            style="?textAppearanceSubtitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Current balance:" />
+
+        <TextView
+            android:id="@+id/tvBalanceAmount"
+            style="?textAppearanceHeadline4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/two_grid_unit"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            app:layout_constraintEnd_toStartOf="@+id/swVisibleInOverview"
+            app:layout_constraintStart_toStartOf="@id/tvBalanceName"
+            app:layout_constraintTop_toBottomOf="@id/tvBalanceName"
+            tools:text="200000" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/swVisibleInOverview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEditBalance"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/one_grid_unit"
+            android:text="@string/edit_balance"
+            app:layout_constraintTop_toBottomOf="@id/tvBalanceAmount" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDeleteBalance"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/one_grid_unit"
+            android:text="@string/delete_balance"
+            app:layout_constraintTop_toBottomOf="@id/btnEditBalance" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

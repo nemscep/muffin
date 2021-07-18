@@ -9,4 +9,8 @@
         <item name="shapeAppearanceOverlay">?shapeAppearanceMediumComponent</item>
     </style>
 
+    <style name="Widget.Muffin.Switch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+
+    </style>
+
 </resources>

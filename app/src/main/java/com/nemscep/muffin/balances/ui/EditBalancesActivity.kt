@@ -1,6 +1,7 @@
 package com.nemscep.muffin.balances.ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -32,6 +33,17 @@ class EditBalancesActivity : AppCompatActivity() {
     private fun ActivityEditBalancesBinding.setupToolbar() {
         val appBarConfiguration = AppBarConfiguration(emptySet())
         tbEditBalances.setupWithNavController(navController, appBarConfiguration)
+        tbEditBalances.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.optionAddBalance -> Toast.makeText(
+                    this@EditBalancesActivity,
+                    "Adding balance",
+                    Toast.LENGTH_SHORT
+                ).show()
+                else -> Unit
+            }
+            true
+        }
         tbEditBalances.setNavigationOnClickListener {
             if (!navController.navigateUp()) onBackPressed()
         }
