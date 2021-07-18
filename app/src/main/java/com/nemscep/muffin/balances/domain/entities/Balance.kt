@@ -14,15 +14,18 @@ import com.nemscep.muffin.profile.domain.entities.Currency
  * [SpecificBalance] - represents balance specific to a certain-goal-user-intends-money-for.
  */
 sealed class Balance {
+    abstract val id: Int
     abstract val value: Float
     abstract val currency: Currency
 
     data class MainBalance(
+        override val id: Int,
         override val value: Float,
         override val currency: Currency
     ) : Balance()
 
     data class SavingsBalance(
+        override val id: Int,
         override val value: Float,
         override val currency: Currency
     ) : Balance()
@@ -31,6 +34,7 @@ sealed class Balance {
      * Specific balance defined by @param name.
      */
     data class SpecificBalance(
+        override val id: Int,
         val name: String,
         override val value: Float,
         override val currency: Currency

@@ -35,5 +35,5 @@ interface BalancesRepository {
     /**
      * Deletes provided balance.
      */
-    suspend fun deleteBalance(balance: Balance): Outcome<Unit, CompositeFailure<Nothing>>
+    suspend fun deleteBalance(balanceId: Int): Outcome<Unit, CompositeFailure<Nothing>>
 }

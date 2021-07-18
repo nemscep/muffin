@@ -21,11 +21,11 @@ class DeleteBalanceTest {
     fun `when deleting balance is successful, success is returned`() = runBlockingTest {
         // Given
         val expected = Success(Unit)
-        coEvery { balancesRepository.deleteBalance(MAIN_BALANCE) } returns expected
+        coEvery { balancesRepository.deleteBalance(MAIN_BALANCE.id) } returns expected
         `given tested use case`()
 
         // When
-        val outcome = tested(MAIN_BALANCE)
+        val outcome = tested(MAIN_BALANCE.id)
 
         // Then
         outcome shouldEqual expected
@@ -35,11 +35,11 @@ class DeleteBalanceTest {
     fun `when deleting balance is unsuccessful, failure is returned`() = runBlockingTest {
         // Given
         val expected = Failure(Unspecified(error = Exception()))
-        coEvery { balancesRepository.deleteBalance(MAIN_BALANCE) } returns expected
+        coEvery { balancesRepository.deleteBalance(MAIN_BALANCE.id) } returns expected
         `given tested use case`()
 
         // When
-        val outcome = tested(MAIN_BALANCE)
+        val outcome = tested(MAIN_BALANCE.id)
 
         // Then
         outcome shouldEqual expected
@@ -50,4 +50,4 @@ class DeleteBalanceTest {
     }
 }
 
-private val MAIN_BALANCE = MainBalance(value = 1000f, currency = EUR)
+private val MAIN_BALANCE = MainBalance(value = 1000f, currency = EUR, id = 1)

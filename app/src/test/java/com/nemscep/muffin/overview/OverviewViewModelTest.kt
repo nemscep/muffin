@@ -8,9 +8,9 @@ import com.nemscep.muffin.balances.domain.entities.Balance.SpecificBalance
 import com.nemscep.muffin.balances.domain.usecases.GetBalances
 import com.nemscep.muffin.common.TestCoroutineRule
 import com.nemscep.muffin.common.runBlockingTest
-import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.MainBalanceUiModel
-import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.SavingsBalanceUiModel
-import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.SpecificBalanceUiModel
+import com.nemscep.muffin.overview.OverviewItem.BalanceOverviewUiModel.MainBalanceOverviewUiModel
+import com.nemscep.muffin.overview.OverviewItem.BalanceOverviewUiModel.SavingsBalanceOverviewUiModel
+import com.nemscep.muffin.overview.OverviewItem.BalanceOverviewUiModel.SpecificBalanceOverviewUiModel
 import com.nemscep.muffin.overview.OverviewItem.BalancesHeader
 import com.nemscep.muffin.overview.OverviewItem.TransactionsOverviewHeader
 import com.nemscep.muffin.profile.domain.entities.Currency.EUR
@@ -52,15 +52,15 @@ class OverviewViewModelTest {
 }
 
 private val BALANCES = listOf(
-    MainBalance(value = 2f, currency = EUR),
-    SavingsBalance(value = 3f, currency = EUR),
-    SpecificBalance(value = 2f, name = "Test", currency = EUR)
+    MainBalance(value = 2f, currency = EUR, id = 1),
+    SavingsBalance(value = 3f, currency = EUR, id = 2),
+    SpecificBalance(value = 2f, name = "Test", currency = EUR, id = 3)
 )
 
 private val OVERVIEW_ITEMS = listOf(
     BalancesHeader,
-    MainBalanceUiModel(value = 2f, currency = "EUR"),
-    SavingsBalanceUiModel(value = 3f, currency = "EUR"),
-    SpecificBalanceUiModel(name = "Test", value = 2f, currency = "EUR"),
+    MainBalanceOverviewUiModel(value = 2f, currency = "EUR"),
+    SavingsBalanceOverviewUiModel(value = 3f, currency = "EUR"),
+    SpecificBalanceOverviewUiModel(name = "Test", value = 2f, currency = "EUR"),
     TransactionsOverviewHeader
 )

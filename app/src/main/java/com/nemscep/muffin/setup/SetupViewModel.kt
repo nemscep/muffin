@@ -36,7 +36,8 @@ class SetupViewModel(
             )
             val mainBalance = MainBalance(
                 value = currentBalance,
-                currency = currency
+                currency = currency,
+                id = 0 // TODO(Figure out a better way)
             )
             when (setupProfile(profile, pin, mainBalance)) {
                 is Success -> _events.value = NavigateToDashboard

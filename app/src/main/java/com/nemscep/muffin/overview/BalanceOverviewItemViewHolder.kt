@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.nemscep.muffin.R
 import com.nemscep.muffin.databinding.ItemBalanceBinding
-import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel
-import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.MainBalanceUiModel
-import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.SavingsBalanceUiModel
-import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.SpecificBalanceUiModel
+import com.nemscep.muffin.overview.OverviewItem.BalanceOverviewUiModel
+import com.nemscep.muffin.overview.OverviewItem.BalanceOverviewUiModel.MainBalanceOverviewUiModel
+import com.nemscep.muffin.overview.OverviewItem.BalanceOverviewUiModel.SavingsBalanceOverviewUiModel
+import com.nemscep.muffin.overview.OverviewItem.BalanceOverviewUiModel.SpecificBalanceOverviewUiModel
 
-data class BalanceItemViewHolder(
+data class BalanceOverviewItemViewHolder(
     private val itemBalanceBinding: ItemBalanceBinding,
     private val openDetails: (String) -> Unit
 ) : OverviewViewHolder(itemBalanceBinding.root) {
@@ -18,14 +18,13 @@ data class BalanceItemViewHolder(
     private val savingsBalanceText by lazy { itemBalanceBinding.root.context.getString(R.string.savings_balance) }
 
     override fun bind(overviewItem: OverviewItem) {
-        val balanceItem = overviewItem as BalanceUiModel
+        val balanceItem = overviewItem as BalanceOverviewUiModel
         with(itemBalanceBinding) {
-            val balanceName = when (balanceItem) {
-                is MainBalanceUiModel -> mainBalanceText
-                is SavingsBalanceUiModel -> savingsBalanceText
-                is SpecificBalanceUiModel -> balanceItem.name
+            tvBalanceName.text = when (balanceItem) {
+                is MainBalanceOverviewUiModel -> mainBalanceText
+                is SavingsBalanceOverviewUiModel -> savingsBalanceText
+                is SpecificBalanceOverviewUiModel -> balanceItem.name
             }
-            tvBalanceName.text = balanceName
             tvBalanceAmount.text = "${balanceItem.value} ${balanceItem.currency}"
         }
     }
@@ -37,7 +36,7 @@ data class BalanceItemViewHolder(
                 parent,
                 false
             )
-            return BalanceItemViewHolder(binding, openDetails)
+            return BalanceOverviewItemViewHolder(binding, openDetails)
         }
     }
 }

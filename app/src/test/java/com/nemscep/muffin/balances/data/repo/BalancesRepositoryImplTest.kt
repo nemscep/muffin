@@ -129,11 +129,11 @@ class BalancesRepositoryImplTest {
     fun `when balance deletion is successful, success is returned`() =
         testCoroutineRule.runBlockingTest {
             // Given
-            coEvery { balanceDao.deleteBalance(MAIN_BALANCE.toEntity()) } returns Unit
+            coEvery { balanceDao.deleteBalance(MAIN_BALANCE.id) } returns Unit
             `given tested use case`()
 
             // When
-            val outcome = tested.deleteBalance(MAIN_BALANCE)
+            val outcome = tested.deleteBalance(MAIN_BALANCE.id)
 
             // Then
             outcome shouldEqual Success(Unit)
@@ -144,11 +144,11 @@ class BalancesRepositoryImplTest {
         testCoroutineRule.runBlockingTest {
             // Given
             val exception = Exception()
-            coEvery { balanceDao.deleteBalance(MAIN_BALANCE.toEntity()) } coAnswers { throw exception }
+            coEvery { balanceDao.deleteBalance(MAIN_BALANCE.id) } coAnswers { throw exception }
             `given tested use case`()
 
             // When
-            val outcome = tested.deleteBalance(MAIN_BALANCE)
+            val outcome = tested.deleteBalance(MAIN_BALANCE.id)
 
             // Then
             outcome shouldEqual Failure(Unspecified(error = exception))
@@ -162,9 +162,10 @@ class BalancesRepositoryImplTest {
     }
 }
 
-private val MAIN_BALANCE = MainBalance(value = 1000f, currency = EUR)
-private val SAVINGS_BALANCE = SavingsBalance(value = 1000f, currency = EUR)
-private val SPECIFIC_BALANCE = SpecificBalance(name = "Allowance", value = 1000f, currency = EUR)
+private val MAIN_BALANCE = MainBalance(value = 1000f, currency = EUR, id = 1)
+private val SAVINGS_BALANCE = SavingsBalance(value = 1000f, currency = EUR, id = 2)
+private val SPECIFIC_BALANCE =
+    SpecificBalance(name = "Allowance", value = 1000f, currency = EUR, id = 3)
 private val BALANCES = listOf(MAIN_BALANCE, SAVINGS_BALANCE, SPECIFIC_BALANCE)
 private val BALANCES_ENTITIES = listOf(
     MAIN_BALANCE.toEntity(),

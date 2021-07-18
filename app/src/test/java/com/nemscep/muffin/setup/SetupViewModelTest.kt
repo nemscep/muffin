@@ -94,4 +94,4 @@ private val PROFILE = Profile(
 )
 private const val PIN = 1234
 private const val CURRENT_BALANCE = 1234f
-private val MAIN_BALANCE = MainBalance(value = CURRENT_BALANCE, currency = PROFILE.currency)
+private val MAIN_BALANCE = MainBalance(value = CURRENT_BALANCE, currency = PROFILE.currency, id = 0)

@@ -1,7 +1,6 @@
 package com.nemscep.muffin.balances.data.datasources
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -17,7 +16,7 @@ interface BalanceDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBalance(balanceEntity: BalanceEntity)
 
-    @Delete
-    suspend fun deleteBalance(balanceEntity: BalanceEntity)
+    @Query("DELETE FROM ${BalanceEntity.TABLE_NAME} WHERE id == :balanceId")
+    suspend fun deleteBalance(balanceId: Int)
 
 }

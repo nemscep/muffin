@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import com.nemscep.muffin.R
 import com.nemscep.muffin.databinding.ItemBalancesHeaderBinding
 
-data class BalancesHeaderViewHolder(
+data class BalancesOverviewHeaderViewHolder(
     private val itemBalancesHeaderBinding: ItemBalancesHeaderBinding,
     private val onEditBalances: () -> Unit
 ) : OverviewViewHolder(itemBalancesHeaderBinding.root) {
@@ -26,7 +26,7 @@ data class BalancesHeaderViewHolder(
                 parent,
                 false
             )
-            return BalancesHeaderViewHolder(binding, onEditBalances)
+            return BalancesOverviewHeaderViewHolder(binding, onEditBalances)
         }
     }
 }

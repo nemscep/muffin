@@ -48,10 +48,10 @@ class BalancesRepositoryImpl(
             }
         }
 
-    override suspend fun deleteBalance(balance: Balance): Outcome<Unit, CompositeFailure<Nothing>> =
+    override suspend fun deleteBalance(balanceId: Int): Outcome<Unit, CompositeFailure<Nothing>> =
         withContext(ioDispatcher) {
             try {
-                balanceDao.deleteBalance(balanceEntity = balance.toEntity())
+                balanceDao.deleteBalance(balanceId = balanceId)
                 Success(Unit)
             } catch (e: Exception) {
                 Failure(Unspecified(error = e))

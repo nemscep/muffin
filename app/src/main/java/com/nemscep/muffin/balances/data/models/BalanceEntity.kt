@@ -35,24 +35,27 @@ fun Balance.toEntity(): BalanceEntity = when (this) {
     is MainBalance -> BalanceEntity(
         value = value,
         currency = currency,
-        type = MAIN
+        type = MAIN,
+        id = id
     )
     is SavingsBalance -> BalanceEntity(
         value = value,
         currency = currency,
-        type = SAVINGS
+        type = SAVINGS,
+        id = id
     )
     is SpecificBalance -> BalanceEntity(
         value = value,
         currency = currency,
         name = name,
-        type = SPECIFIC
+        type = SPECIFIC,
+        id = id
     )
 }
 
 fun BalanceEntity.toDomain(): Balance = when (this.type) {
-    MAIN -> MainBalance(value = value, currency = currency)
-    SAVINGS -> SavingsBalance(value = value, currency = currency)
-    SPECIFIC -> SpecificBalance(value = value, name = name!!, currency = currency)
+    MAIN -> MainBalance(value = value, currency = currency, id = id)
+    SAVINGS -> SavingsBalance(value = value, currency = currency, id = id)
+    SPECIFIC -> SpecificBalance(value = value, name = name!!, currency = currency, id = id)
 }
 

@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.MainBalanceUiModel
-import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.SavingsBalanceUiModel
-import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.SpecificBalanceUiModel
+import com.nemscep.muffin.overview.OverviewItem.BalanceOverviewUiModel.MainBalanceOverviewUiModel
+import com.nemscep.muffin.overview.OverviewItem.BalanceOverviewUiModel.SavingsBalanceOverviewUiModel
+import com.nemscep.muffin.overview.OverviewItem.BalanceOverviewUiModel.SpecificBalanceOverviewUiModel
 import com.nemscep.muffin.overview.OverviewItem.BalancesHeader
 import com.nemscep.muffin.overview.OverviewItem.TransactionsOverviewHeader
 
@@ -17,10 +17,10 @@ class OverviewAdapter(
 ) : ListAdapter<OverviewItem, OverviewViewHolder>(OverviewDiffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OverviewViewHolder =
         when (viewType) {
-            BALANCE_HEADER -> BalancesHeaderViewHolder.create(parent, onEditBalances)
-            MAIN_BALANCE -> BalanceItemViewHolder.create(parent, {})
-            SAVINGS_BALANCE -> BalanceItemViewHolder.create(parent, {})
-            SPECIFIC_BALANCE -> BalanceItemViewHolder.create(parent, {})
+            BALANCE_HEADER -> BalancesOverviewHeaderViewHolder.create(parent, onEditBalances)
+            MAIN_BALANCE -> BalanceOverviewItemViewHolder.create(parent, {})
+            SAVINGS_BALANCE -> BalanceOverviewItemViewHolder.create(parent, {})
+            SPECIFIC_BALANCE -> BalanceOverviewItemViewHolder.create(parent, {})
             TRANSACTIONS_OVERVIEW_HEADER -> {
                 TransactionsOverviewHeaderViewHolder.create(
                     parent,
@@ -36,9 +36,9 @@ class OverviewAdapter(
 
     override fun getItemViewType(position: Int): Int = when (getItem(position)) {
         is BalancesHeader -> BALANCE_HEADER
-        is MainBalanceUiModel -> MAIN_BALANCE
-        is SavingsBalanceUiModel -> SAVINGS_BALANCE
-        is SpecificBalanceUiModel -> SPECIFIC_BALANCE
+        is MainBalanceOverviewUiModel -> MAIN_BALANCE
+        is SavingsBalanceOverviewUiModel -> SAVINGS_BALANCE
+        is SpecificBalanceOverviewUiModel -> SPECIFIC_BALANCE
         is TransactionsOverviewHeader -> TRANSACTIONS_OVERVIEW_HEADER
         else -> TODO()
     }
@@ -62,9 +62,9 @@ object OverviewDiffUtil : DiffUtil.ItemCallback<OverviewItem>() {
 }
 
 private fun OverviewItem.isBalanceHeader() = this is BalancesHeader
-private fun OverviewItem.isMainBalanceUiModel() = this is MainBalanceUiModel
-private fun OverviewItem.isSavingsBalanceUiModel() = this is SavingsBalanceUiModel
-private fun OverviewItem.isSpecificBalanceUiModel() = this is SpecificBalanceUiModel
+private fun OverviewItem.isMainBalanceUiModel() = this is MainBalanceOverviewUiModel
+private fun OverviewItem.isSavingsBalanceUiModel() = this is SavingsBalanceOverviewUiModel
+private fun OverviewItem.isSpecificBalanceUiModel() = this is SpecificBalanceOverviewUiModel
 
 sealed class OverviewViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     abstract fun bind(overviewItem: OverviewItem)
