@@ -19,4 +19,7 @@ interface BalanceDao {
     @Query("DELETE FROM ${BalanceEntity.TABLE_NAME} WHERE id == :balanceId")
     suspend fun deleteBalance(balanceId: Int)
 
+    @Query("UPDATE BALANCE SET isVisibleInOverview = :value WHERE id = :balanceId")
+    suspend fun updateIsVisibleInOverviewFlag(value: Boolean, balanceId: Int)
+
 }

@@ -57,4 +57,17 @@ class BalancesRepositoryImpl(
                 Failure(Unspecified(error = e))
             }
         }
+
+    override suspend fun changeIsVisibleInOverviewFlag(
+        value: Boolean,
+        balanceId: Int
+    ): Outcome<Unit, CompositeFailure<Nothing>> =
+        withContext(ioDispatcher) {
+            try {
+                balanceDao.updateIsVisibleInOverviewFlag(value = value, balanceId = balanceId)
+                Success(Unit)
+            } catch (e: Exception) {
+                Failure(Unspecified(error = e))
+            }
+        }
 }

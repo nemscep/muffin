@@ -36,4 +36,12 @@ interface BalancesRepository {
      * Deletes provided balance.
      */
     suspend fun deleteBalance(balanceId: Int): Outcome<Unit, CompositeFailure<Nothing>>
+
+    /**
+     * Changes isVisibleInOverview flag to provided value
+     */
+    suspend fun changeIsVisibleInOverviewFlag(
+        value: Boolean,
+        balanceId: Int
+    ): Outcome<Unit, CompositeFailure<Nothing>>
 }
