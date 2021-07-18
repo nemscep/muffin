@@ -2,11 +2,18 @@ package com.nemscep.muffin.overview
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import com.nemscep.muffin.balances.domain.entities.Balance.MainBalance
+import com.nemscep.muffin.balances.domain.entities.Balance.SavingsBalance
+import com.nemscep.muffin.balances.domain.entities.Balance.SpecificBalance
+import com.nemscep.muffin.balances.domain.usecases.GetBalances
 import com.nemscep.muffin.common.TestCoroutineRule
 import com.nemscep.muffin.common.runBlockingTest
-import com.nemscep.muffin.profile.domain.entities.Currency.RSD
-import com.nemscep.muffin.profile.domain.entities.Profile
-import com.nemscep.muffin.profile.domain.usecases.GetProfile
+import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.MainBalanceUiModel
+import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.SavingsBalanceUiModel
+import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.SpecificBalanceUiModel
+import com.nemscep.muffin.overview.OverviewItem.BalancesHeader
+import com.nemscep.muffin.overview.OverviewItem.TransactionsOverviewHeader
+import com.nemscep.muffin.profile.domain.entities.Currency.EUR
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.spyk
@@ -16,8 +23,8 @@ import org.junit.Rule
 import org.junit.Test
 
 class OverviewViewModelTest {
-    private val getProfile: GetProfile = mockk(relaxed = true)
-    private val profileObserver: Observer<Profile> = spyk()
+    private val getBalances: GetBalances = mockk(relaxed = true)
+    private val overviewItemsObserver: Observer<List<OverviewItem>> = spyk()
     private lateinit var tested: OverviewViewModel
 
     @get:Rule
@@ -27,38 +34,33 @@ class OverviewViewModelTest {
     val testCoroutineRule = TestCoroutineRule()
 
     @Test
-    fun `when profile value change, they are emitted properly`() =
-        testCoroutineRule.runBlockingTest {
-            // Given
-            every { getProfile() } returns flowOf(PROFILE_1, PROFILE_2, PROFILE_3)
-            tested = OverviewViewModel(getProfile = getProfile)
+    fun `overview items list are mapped properly`() = testCoroutineRule.runBlockingTest {
+        // Given
+        every { getBalances() } returns flowOf(BALANCES)
+        `given tested view model`()
 
-            // When
-            tested.profile.observeForever(profileObserver)
+        // When
+        tested.overviewItems.observeForever(overviewItemsObserver)
 
-            // Then
-            verifySequence {
-                profileObserver.onChanged(PROFILE_1)
-                profileObserver.onChanged(PROFILE_2)
-                profileObserver.onChanged(PROFILE_3)
-            }
-        }
+        // Then
+        verifySequence { overviewItemsObserver.onChanged(OVERVIEW_ITEMS) }
+    }
+
+    private fun `given tested view model`() {
+        tested = OverviewViewModel(getBalances = getBalances)
+    }
 }
 
-private val PROFILE_1 = Profile(
-    name = "Nemanja",
-    monthlyIncome = 1000,
-    currency = RSD
+private val BALANCES = listOf(
+    MainBalance(value = 2f, currency = EUR),
+    SavingsBalance(value = 3f, currency = EUR),
+    SpecificBalance(value = 2f, name = "Test", currency = EUR)
 )
 
-private val PROFILE_2 = Profile(
-    name = "Nemanja",
-    monthlyIncome = 1000,
-    currency = RSD
-)
-
-private val PROFILE_3 = Profile(
-    name = "Nemanja",
-    monthlyIncome = 5000,
-    currency = RSD
+private val OVERVIEW_ITEMS = listOf(
+    BalancesHeader,
+    MainBalanceUiModel(value = 2f, currency = "EUR"),
+    SavingsBalanceUiModel(value = 3f, currency = "EUR"),
+    SpecificBalanceUiModel(name = "Test", value = 2f, currency = "EUR"),
+    TransactionsOverviewHeader
 )

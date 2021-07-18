@@ -2,6 +2,7 @@ package com.nemscep.muffin.overview
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.nemscep.muffin.R
@@ -26,18 +27,21 @@ class OverviewFragment : Fragment(layout.fragment_overview) {
     }
 
     private fun FragmentOverviewBinding.setupViews() {
-        overviewAdapter = OverviewAdapter(onEditBalances = {
-            findNavController().navigate(R.id.editBalancesActivity)
-        })
+        overviewAdapter = OverviewAdapter(
+            onEditBalances = { findNavController().navigate(R.id.editBalancesActivity) },
+            onViewTransactionsOverview = {
+                Toast.makeText(
+                    requireContext(),
+                    "Transactions overview",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        )
         rvOverview.adapter = overviewAdapter
     }
 
     private fun FragmentOverviewBinding.setupLiveData() {
         with(viewModel) {
-            profile.observe(viewLifecycleOwner) { profile ->
-
-            }
-
             overviewItems.observe(viewLifecycleOwner) {
                 overviewAdapter.submitList(it)
             }

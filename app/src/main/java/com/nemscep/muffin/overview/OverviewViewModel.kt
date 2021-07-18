@@ -13,23 +13,19 @@ import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.MainBalanceUiMode
 import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.SavingsBalanceUiModel
 import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.SpecificBalanceUiModel
 import com.nemscep.muffin.overview.OverviewItem.BalancesHeader
-import com.nemscep.muffin.profile.domain.usecases.GetProfile
+import com.nemscep.muffin.overview.OverviewItem.TransactionsOverviewHeader
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 
-class OverviewViewModel(
-    getProfile: GetProfile,
-    private val getBalances: GetBalances
-) : ViewModel() {
-    val profile = getProfile().asLiveData()
-    val balances = getBalances().asLiveData()
+class OverviewViewModel(private val getBalances: GetBalances) : ViewModel() {
     val overviewItems: LiveData<List<OverviewItem>> = overviewItemsLiveData()
 
     private fun overviewItemsLiveData(): LiveData<List<OverviewItem>> = combine(
         flowOf(listOf(BalancesHeader)),
-        getBalances().map { balances -> balances.map { it.toUiModel() } }
-    ) { header, balances -> header + balances }.asLiveData()
+        getBalances().map { balances -> balances.map { it.toUiModel() } },
+        flowOf(listOf(TransactionsOverviewHeader))
+    ) { balancesHeader, balances, transactionsHeader -> balancesHeader + balances + transactionsHeader }.asLiveData()
 }
 
 /**
@@ -57,6 +53,8 @@ sealed class OverviewItem {
             override val currency: String
         ) : BalanceUiModel()
     }
+
+    object TransactionsOverviewHeader : OverviewItem()
 }
 
 fun Balance.toUiModel(): BalanceUiModel = when (this) {

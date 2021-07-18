@@ -55,7 +55,7 @@ class GetBalancesTest {
     }
 }
 
-private val MAIN_BALANCE = MainBalance(value = 1000, currency = EUR)
-private val SAVINGS_BALANCE = SavingsBalance(value = 1000, currency = EUR)
-private val SPECIFIC_BALANCE = SpecificBalance(name = "Allowance", value = 1000, currency = EUR)
+private val MAIN_BALANCE = MainBalance(value = 1000f, currency = EUR)
+private val SAVINGS_BALANCE = SavingsBalance(value = 1000f, currency = EUR)
+private val SPECIFIC_BALANCE = SpecificBalance(name = "Allowance", value = 1000f, currency = EUR)
 private val BALANCES = listOf(MAIN_BALANCE, SAVINGS_BALANCE, SPECIFIC_BALANCE)

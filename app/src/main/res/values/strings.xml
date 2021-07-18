@@ -26,4 +26,5 @@
     <string name="main_balance">Main balance</string>
     <string name="savings_balance">Savings balance</string>
     <string name="edit_balances">Edit balances</string>
+    <string name="transactions_overview">Transactions overview</string>
 </resources>

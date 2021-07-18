@@ -12,7 +12,7 @@ import com.nemscep.muffin.overview.OverviewItem.BalanceUiModel.SpecificBalanceUi
 data class BalanceItemViewHolder(
     private val itemBalanceBinding: ItemBalanceBinding,
     private val openDetails: (String) -> Unit
-) : BalanceViewHolder(itemBalanceBinding.root) {
+) : OverviewViewHolder(itemBalanceBinding.root) {
 
     private val mainBalanceText by lazy { itemBalanceBinding.root.context.getString(R.string.main_balance) }
     private val savingsBalanceText by lazy { itemBalanceBinding.root.context.getString(R.string.savings_balance) }
@@ -31,7 +31,7 @@ data class BalanceItemViewHolder(
     }
 
     companion object {
-        fun create(parent: ViewGroup, openDetails: (String) -> Unit): BalanceViewHolder {
+        fun create(parent: ViewGroup, openDetails: (String) -> Unit): OverviewViewHolder {
             val binding = ItemBalanceBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,

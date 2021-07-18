@@ -8,7 +8,7 @@ import com.nemscep.muffin.databinding.ItemBalancesHeaderBinding
 data class BalancesHeaderViewHolder(
     private val itemBalancesHeaderBinding: ItemBalancesHeaderBinding,
     private val onEditBalances: () -> Unit
-) : BalanceViewHolder(itemBalancesHeaderBinding.root) {
+) : OverviewViewHolder(itemBalancesHeaderBinding.root) {
 
     private val headerText by lazy { itemBalancesHeaderBinding.root.resources.getString(R.string.my_balances) }
 
@@ -20,7 +20,7 @@ data class BalancesHeaderViewHolder(
     }
 
     companion object {
-        fun create(parent: ViewGroup, onEditBalances: () -> Unit): BalanceViewHolder {
+        fun create(parent: ViewGroup, onEditBalances: () -> Unit): OverviewViewHolder {
             val binding = ItemBalancesHeaderBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,

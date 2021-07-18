@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer
 import com.nemscep.burrito.CompositeFailure.Network.Unspecified
 import com.nemscep.burrito.Outcome.Failure
 import com.nemscep.burrito.Outcome.Success
+import com.nemscep.muffin.balances.domain.entities.Balance.MainBalance
 import com.nemscep.muffin.common.TestCoroutineRule
 import com.nemscep.muffin.common.runBlockingTest
 import com.nemscep.muffin.profile.domain.entities.Currency.EUR
@@ -35,21 +36,21 @@ class SetupViewModelTest {
     fun `when setup profile is called, use case is invoked properly`() =
         testCoroutineRule.runBlockingTest {
             // Given
-            coEvery { setupProfile(PROFILE, PIN, CURRENT_BALANCE) } returns Success(Unit)
+            coEvery { setupProfile(PROFILE, PIN, MAIN_BALANCE) } returns Success(Unit)
             `given tested use case`()
 
             // When
             tested.setupProfile("Test", 1000, EUR, CURRENT_BALANCE, 1234)
 
             // Then
-            coVerify(exactly = 1) { setupProfile(PROFILE, PIN, CURRENT_BALANCE) }
+            coVerify(exactly = 1) { setupProfile(PROFILE, PIN, MAIN_BALANCE) }
         }
 
     @Test
     fun `when setup profile is finished successfully, navigation event is emitted properly`() =
         testCoroutineRule.runBlockingTest {
             // Given
-            coEvery { setupProfile(PROFILE, PIN, CURRENT_BALANCE) } returns Success(Unit)
+            coEvery { setupProfile(PROFILE, PIN, MAIN_BALANCE) } returns Success(Unit)
             `given tested use case`()
 
             // When
@@ -60,14 +61,14 @@ class SetupViewModelTest {
             verifySequence {
                 eventsObserver.onChanged(NavigateToDashboard)
             }
-            coVerify(exactly = 1) { setupProfile(PROFILE, PIN, CURRENT_BALANCE) }
+            coVerify(exactly = 1) { setupProfile(PROFILE, PIN, MAIN_BALANCE) }
         }
 
     @Test
     fun `when setup profile is finished unsuccessfully, error event is emitted properly`() =
         testCoroutineRule.runBlockingTest {
             // Given
-            coEvery { setupProfile(PROFILE, PIN, CURRENT_BALANCE) } returns Failure(Unspecified())
+            coEvery { setupProfile(PROFILE, PIN, MAIN_BALANCE) } returns Failure(Unspecified())
             `given tested use case`()
 
             // When
@@ -78,7 +79,7 @@ class SetupViewModelTest {
             verifySequence {
                 eventsObserver.onChanged(SetupFailed)
             }
-            coVerify(exactly = 1) { setupProfile(PROFILE, PIN, CURRENT_BALANCE) }
+            coVerify(exactly = 1) { setupProfile(PROFILE, PIN, MAIN_BALANCE) }
         }
 
     private fun `given tested use case`() {
@@ -92,4 +93,5 @@ private val PROFILE = Profile(
     currency = EUR,
 )
 private const val PIN = 1234
-private const val CURRENT_BALANCE = 1000f
+private const val CURRENT_BALANCE = 1234f
+private val MAIN_BALANCE = MainBalance(value = CURRENT_BALANCE, currency = PROFILE.currency)

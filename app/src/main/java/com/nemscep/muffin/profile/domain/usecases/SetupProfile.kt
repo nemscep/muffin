@@ -26,12 +26,12 @@ class SetupProfile(
     suspend operator fun invoke(
         profile: Profile,
         pin: Int,
-        currentBalance: Float
+        mainBalance: MainBalance
     ): Outcome<Unit, CompositeFailure<Any>> =
         asyncAll(
             dispatcher = ioDispatcher,
-            { addBalance(MainBalance(currency = profile.currency, value = currentBalance)) },
-            { authRepository.setPin(Pin(value = pin)) },
             { profileRepository.setProfile(profile) },
-            { sessionRepository.openSession() })
+            { authRepository.setPin(Pin(value = pin)) },
+            { sessionRepository.openSession() },
+            { addBalance(mainBalance) })
 }

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nemscep.burrito.Outcome.Failure
 import com.nemscep.burrito.Outcome.Success
+import com.nemscep.muffin.balances.domain.entities.Balance.MainBalance
 import com.nemscep.muffin.profile.domain.entities.Currency
 import com.nemscep.muffin.profile.domain.entities.Profile
 import com.nemscep.muffin.profile.domain.usecases.SetupProfile
@@ -33,7 +34,11 @@ class SetupViewModel(
                 monthlyIncome = monthlyIncome,
                 currency = currency
             )
-            when (setupProfile(profile, pin, currentBalance)) {
+            val mainBalance = MainBalance(
+                value = currentBalance,
+                currency = currency
+            )
+            when (setupProfile(profile, pin, mainBalance)) {
                 is Success -> _events.value = NavigateToDashboard
                 is Failure -> _events.value = SetupFailed
             }
