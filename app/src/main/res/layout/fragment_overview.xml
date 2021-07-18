@@ -15,6 +15,6 @@
         android:clipToPadding="false"
         android:padding="@dimen/two_grid_unit"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_balance" />
+        tools:listitem="@layout/item_balance_overview" />
 
 </FrameLayout>
