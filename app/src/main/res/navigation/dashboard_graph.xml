@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dashboard_graph"
     app:startDestination="@+id/overview_graph">
 
-    <include app:graph="@navigation/overview_graph"/>
-    <include app:graph="@navigation/history_graph"/>
+    <include app:graph="@navigation/overview_graph" />
+    <include app:graph="@navigation/history_graph" />
+    <activity
+        android:id="@+id/trackExpenseActivity"
+        android:name="com.nemscep.muffin.track.ui.expense.TrackExpenseActivity"
+        android:label="activity_track_expense"
+        tools:layout="@layout/activity_track_expense" />
+    <activity
+        android:id="@+id/trackTopupActivity"
+        android:name="com.nemscep.muffin.track.ui.topup.TrackTopupActivity"
+        android:label="activity_track_topup"
+        tools:layout="@layout/activity_track_topup" />
+
 
 </navigation>
