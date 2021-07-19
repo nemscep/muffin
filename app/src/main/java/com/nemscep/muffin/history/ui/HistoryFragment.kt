@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.nemscep.muffin.R
+import com.nemscep.muffin.common.RecyclerViewMargin
 import com.nemscep.muffin.databinding.FragmentHistoryBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import viewBinding
@@ -14,6 +15,8 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
     private val viewModel by viewModel<HistoryViewModel>()
 
     private lateinit var historyAdapter: HistoryAdapter
+
+    private val decoratorMargin by lazy { resources.getDimensionPixelSize(R.dimen.one_grid_unit) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,6 +28,7 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
     private fun FragmentHistoryBinding.setupViews() {
         historyAdapter = HistoryAdapter(onExpenseCategoryClicked = {}, onTopupChipClicked = {})
         rvTransactions.adapter = historyAdapter
+        rvTransactions.addItemDecoration(RecyclerViewMargin(decoratorMargin))
     }
 
     private fun FragmentHistoryBinding.setupLiveData() {
