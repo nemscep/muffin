@@ -14,8 +14,8 @@ import com.nemscep.muffin.balances.domain.entities.Balance.MainBalance
 import com.nemscep.muffin.balances.domain.entities.Balance.SavingsBalance
 import com.nemscep.muffin.balances.domain.entities.Balance.SpecificBalance
 import com.nemscep.muffin.databinding.FragmentTrackTopupBinding
-import com.nemscep.muffin.track.ui.topup.TrackTopupEvents.TrackingFailed
-import com.nemscep.muffin.track.ui.topup.TrackTopupEvents.TrackingSuccessful
+import com.nemscep.muffin.track.ui.topup.TrackTopupEvents.TopupTrackingFailed
+import com.nemscep.muffin.track.ui.topup.TrackTopupEvents.TopupTrackingSuccessful
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -50,8 +50,8 @@ class TrackTopupFragment : Fragment(R.layout.fragment_track_topup) {
         with(viewModel) {
             events.observe(viewLifecycleOwner) { event ->
                 when (event) {
-                    TrackingFailed -> TODO()
-                    TrackingSuccessful -> requireActivity().onBackPressed()
+                    TopupTrackingFailed -> TODO()
+                    TopupTrackingSuccessful -> requireActivity().onBackPressed()
                 }
             }
             balances.observe(viewLifecycleOwner) { setupBalanceDropdown(it) }

@@ -1,13 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".track.ui.expense.TrackExpenseFragment">
+    android:fillViewport="true">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/track_expense" />
+        android:orientation="vertical"
+        android:padding="@dimen/three_grid_unit">
 
-</FrameLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/ic_receipt"
+            app:tint="?colorSecondaryVariant" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/three_grid_unit" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilExpenseDescription"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/description"
+            app:counterEnabled="false"
+            app:counterMaxLength="20"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperTextEnabled="true"
+            app:startIconContentDescription="@string/description"
+            app:startIconDrawable="@drawable/ic_article">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilExpenseAmount"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/amount"
+            app:counterEnabled="false"
+            app:counterMaxLength="20"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperTextEnabled="true"
+            app:startIconContentDescription="@string/amount"
+            app:startIconDrawable="@drawable/ic_wallet">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilExpenseDate"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/expense_date"
+            app:counterEnabled="false"
+            app:counterMaxLength="20"
+            app:endIconMode="none"
+            app:errorEnabled="true"
+            app:helperTextEnabled="true"
+            app:startIconContentDescription="@string/expense_date"
+            app:startIconDrawable="@drawable/ic_clock">
+
+            <AutoCompleteTextView
+                android:id="@+id/acExpenseDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilExpenseBalance"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/balance"
+            app:counterEnabled="false"
+            app:counterMaxLength="20"
+            app:endIconMode="dropdown_menu"
+            app:errorEnabled="true"
+            app:helperTextEnabled="true"
+            app:startIconContentDescription="@string/balance"
+            app:startIconDrawable="@drawable/ic_money">
+
+            <AutoCompleteTextView
+                android:id="@+id/acExpenseBalance"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilExpenseCategory"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/category"
+            app:counterEnabled="false"
+            app:counterMaxLength="20"
+            app:endIconMode="dropdown_menu"
+            app:errorEnabled="true"
+            app:helperTextEnabled="true"
+            app:startIconContentDescription="@string/category"
+            app:startIconDrawable="@drawable/ic_cart">
+
+            <AutoCompleteTextView
+                android:id="@+id/acExpenseCategory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/three_grid_unit" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTrackExpense"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/track_expense" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -9,8 +9,8 @@ import com.nemscep.burrito.Outcome.Failure
 import com.nemscep.burrito.Outcome.Success
 import com.nemscep.muffin.balances.domain.entities.Balance
 import com.nemscep.muffin.balances.domain.usecases.GetBalances
-import com.nemscep.muffin.track.ui.topup.TrackTopupEvents.TrackingFailed
-import com.nemscep.muffin.track.ui.topup.TrackTopupEvents.TrackingSuccessful
+import com.nemscep.muffin.track.ui.topup.TrackTopupEvents.TopupTrackingFailed
+import com.nemscep.muffin.track.ui.topup.TrackTopupEvents.TopupTrackingSuccessful
 import com.nemscep.muffin.transactions.domain.entities.Transaction.Topup
 import com.nemscep.muffin.transactions.domain.usecases.AddTransaction
 import java.util.Date
@@ -30,8 +30,8 @@ class TrackTopupViewModel(
         viewModelScope.launch {
             val transaction = Topup(description = description, amount = amount, date = date)
             when (addTransaction(transaction, balance)) {
-                is Success -> _events.value = TrackingSuccessful
-                is Failure -> _events.value = TrackingFailed
+                is Success -> _events.value = TopupTrackingSuccessful
+                is Failure -> _events.value = TopupTrackingFailed
             }
         }
     }
@@ -41,7 +41,7 @@ class TrackTopupViewModel(
  * Sealed class representing all side effects inside topup screen.
  */
 sealed class TrackTopupEvents {
-    object TrackingSuccessful : TrackTopupEvents()
-    object TrackingFailed : TrackTopupEvents()
+    object TopupTrackingSuccessful : TrackTopupEvents()
+    object TopupTrackingFailed : TrackTopupEvents()
 }
 

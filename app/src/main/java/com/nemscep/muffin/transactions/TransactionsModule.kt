@@ -5,6 +5,7 @@ import com.nemscep.muffin.transactions.data.datasources.TransactionDao
 import com.nemscep.muffin.transactions.data.repo.TransactionsRepositoryImpl
 import com.nemscep.muffin.transactions.domain.repo.TransactionsRepository
 import com.nemscep.muffin.transactions.domain.usecases.AddTransaction
+import com.nemscep.muffin.transactions.domain.usecases.GetExpenseCategories
 import com.nemscep.muffin.transactions.domain.usecases.GetTransactions
 import org.koin.dsl.module
 
@@ -13,4 +14,5 @@ val transactionsModule = module {
     single<TransactionsRepository> { TransactionsRepositoryImpl(transactionDao = get()) }
     factory { GetTransactions(transactionsRepository = get()) }
     factory { AddTransaction(transactionsRepository = get(), balancesRepository = get()) }
+    factory { GetExpenseCategories() }
 }

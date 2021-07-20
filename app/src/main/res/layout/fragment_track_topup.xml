@@ -93,7 +93,7 @@
         app:errorEnabled="true"
         app:helperTextEnabled="true"
         app:startIconContentDescription="@string/balance"
-        app:startIconDrawable="@drawable/ic_clock">
+        app:startIconDrawable="@drawable/ic_money">
 
         <AutoCompleteTextView
             android:id="@+id/acTopupBalance"

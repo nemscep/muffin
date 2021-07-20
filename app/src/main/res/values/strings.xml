@@ -41,4 +41,6 @@
     <string name="topup_date">Topup date</string>
     <string name="select_date">Select date</string>
     <string name="balance">Balance</string>
+    <string name="expense_date">Expense date</string>
+    <string name="category">Category</string>
 </resources>
