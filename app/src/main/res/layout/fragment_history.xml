@@ -16,6 +16,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/two_grid_unit"
             android:text="@string/my_transactions" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -23,7 +24,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:clipToPadding="false"
+            android:padding="@dimen/two_grid_unit"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_topup" />
     </LinearLayout>
 
     <LinearLayout

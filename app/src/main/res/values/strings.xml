@@ -36,4 +36,8 @@
     <string name="topup">Topup</string>
     <string name="track_expense">Track expense</string>
     <string name="track_topup">Track topup</string>
+    <string name="description">Description</string>
+    <string name="amount">Amount</string>
+    <string name="topup_date">Topup date</string>
+    <string name="select_date">Select date</string>
 </resources>

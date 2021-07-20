@@ -77,8 +77,9 @@ class TransactionTypeConverter {
 
 class ExpenseCategoryConverter {
     @TypeConverter
-    fun fromJson(expenseCategory: Int): ExpenseCategory =
+    fun fromJson(expenseCategory: Int): ExpenseCategory? =
         when (expenseCategory) {
+            -1 -> null
             0 -> HOME
             1 -> CAR
             2 -> SHOPPING
@@ -87,8 +88,9 @@ class ExpenseCategoryConverter {
         }
 
     @TypeConverter
-    fun toJson(expenseCategory: ExpenseCategory): Int =
+    fun toJson(expenseCategory: ExpenseCategory?): Int =
         when (expenseCategory) {
+            null -> -1
             HOME -> 0
             CAR -> 1
             SHOPPING -> 2

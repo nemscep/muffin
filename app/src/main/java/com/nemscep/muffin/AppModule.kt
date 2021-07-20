@@ -10,6 +10,7 @@ import com.nemscep.muffin.profile.profileModule
 import com.nemscep.muffin.session.sessionModule
 import com.nemscep.muffin.setup.setupModule
 import com.nemscep.muffin.splash.splashModule
+import com.nemscep.muffin.track.trackModule
 import com.nemscep.muffin.transactions.transactionsModule
 import org.koin.core.module.Module
 
@@ -27,5 +28,6 @@ val appModules = listOf<Module>(
     dataStoreModule,
     balancesModule,
     historyModule,
-    transactionsModule
+    transactionsModule,
+    trackModule
 )

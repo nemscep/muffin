@@ -8,11 +8,11 @@
     <fragment
         android:id="@+id/trackTopupFragment"
         android:name="com.nemscep.muffin.track.ui.topup.TrackTopupFragment"
-        android:label="fragment_track_topup"
+        android:label="@string/track_topup"
         tools:layout="@layout/fragment_track_topup" />
     <action
         android:id="@+id/action_global_trackTopupFragment"
         app:destination="@id/trackTopupFragment"
-        app:popUpTo="@id/track_topup_graph"
-        app:launchSingleTop="true" />
+        app:launchSingleTop="true"
+        app:popUpTo="@id/track_topup_graph" />
 </navigation>
