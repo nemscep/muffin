@@ -40,4 +40,5 @@
     <string name="amount">Amount</string>
     <string name="topup_date">Topup date</string>
     <string name="select_date">Select date</string>
+    <string name="balance">Balance</string>
 </resources>

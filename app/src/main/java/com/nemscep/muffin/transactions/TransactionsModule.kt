@@ -12,5 +12,5 @@ val transactionsModule = module {
     single<TransactionDao> { get<MuffinDatabase>().transactionDao() }
     single<TransactionsRepository> { TransactionsRepositoryImpl(transactionDao = get()) }
     factory { GetTransactions(transactionsRepository = get()) }
-    factory { AddTransaction(transactionsRepository = get()) }
+    factory { AddTransaction(transactionsRepository = get(), balancesRepository = get()) }
 }

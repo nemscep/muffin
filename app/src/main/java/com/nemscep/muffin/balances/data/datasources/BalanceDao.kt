@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.nemscep.muffin.balances.data.models.BalanceEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -21,5 +22,8 @@ interface BalanceDao {
 
     @Query("UPDATE BALANCE SET isVisibleInOverview = :value WHERE id = :balanceId")
     suspend fun updateIsVisibleInOverviewFlag(value: Boolean, balanceId: Int)
+
+    @Update
+    suspend fun updateBalance(balanceEntity: BalanceEntity)
 
 }

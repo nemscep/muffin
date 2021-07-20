@@ -70,4 +70,14 @@ class BalancesRepositoryImpl(
                 Failure(Unspecified(error = e))
             }
         }
+
+    override suspend fun updateBalance(balance: Balance): Outcome<Unit, CompositeFailure<Nothing>> =
+        withContext(ioDispatcher) {
+            try {
+                balanceDao.updateBalance(balanceEntity = balance.toEntity())
+                Success(Unit)
+            } catch (e: Exception) {
+                Failure(Unspecified(error = e))
+            }
+        }
 }

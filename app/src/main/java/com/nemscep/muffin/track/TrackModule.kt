@@ -5,5 +5,5 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val trackModule = module {
-    viewModel { TrackTopupViewModel(addTransaction = get()) }
+    viewModel { TrackTopupViewModel(addTransaction = get(), getBalances = get()) }
 }

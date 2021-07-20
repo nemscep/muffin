@@ -44,4 +44,9 @@ interface BalancesRepository {
         value: Boolean,
         balanceId: Int
     ): Outcome<Unit, CompositeFailure<Nothing>>
+
+    /**
+     * Updates balance provided as an argument.
+     */
+    suspend fun updateBalance(balance: Balance): Outcome<Unit, CompositeFailure<Nothing>>
 }

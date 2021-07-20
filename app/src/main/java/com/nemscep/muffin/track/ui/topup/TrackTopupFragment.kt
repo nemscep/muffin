@@ -2,10 +2,17 @@ package com.nemscep.muffin.track.ui.topup
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.nemscep.muffin.R
+import com.nemscep.muffin.R.layout
+import com.nemscep.muffin.balances.domain.entities.Balance
+import com.nemscep.muffin.balances.domain.entities.Balance.MainBalance
+import com.nemscep.muffin.balances.domain.entities.Balance.SavingsBalance
+import com.nemscep.muffin.balances.domain.entities.Balance.SpecificBalance
 import com.nemscep.muffin.databinding.FragmentTrackTopupBinding
 import com.nemscep.muffin.track.ui.topup.TrackTopupEvents.TrackingFailed
 import com.nemscep.muffin.track.ui.topup.TrackTopupEvents.TrackingSuccessful
@@ -21,6 +28,8 @@ class TrackTopupFragment : Fragment(R.layout.fragment_track_topup) {
 
     private val topupText by lazy { getString(R.string.topup) }
     private val requiredFieldText by lazy { getString(R.string.field_required) }
+    private val mainBalanceText by lazy { getString(R.string.main_balance) }
+    private val savingsBalanceText by lazy { getString(R.string.savings_balance) }
 
     private val datePicker by lazy {
         MaterialDatePicker.Builder.datePicker()
@@ -45,7 +54,22 @@ class TrackTopupFragment : Fragment(R.layout.fragment_track_topup) {
                     TrackingSuccessful -> requireActivity().onBackPressed()
                 }
             }
+            balances.observe(viewLifecycleOwner) { setupBalanceDropdown(it) }
         }
+    }
+
+    private fun FragmentTrackTopupBinding.setupBalanceDropdown(balances: List<Balance>) {
+        val adapter = ArrayAdapter(
+            requireContext(),
+            layout.item_balance_name,
+            balances.map { it.getBalanceName() })
+        (tilTopupBalance.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+    }
+
+    private fun Balance.getBalanceName() = when (this) {
+        is MainBalance -> mainBalanceText
+        is SavingsBalance -> savingsBalanceText
+        is SpecificBalance -> name
     }
 
     private fun FragmentTrackTopupBinding.setupDatePicker() {
@@ -62,6 +86,9 @@ class TrackTopupFragment : Fragment(R.layout.fragment_track_topup) {
         tilTopupAmount.editText?.addTextChangedListener {
             tilTopupAmount.error = ""
         }
+        tilTopupBalance.editText?.addTextChangedListener {
+            tilTopupBalance.error = ""
+        }
         acTopupDate.setOnClickListener {
             if (childFragmentManager.findFragmentByTag("topup-picker") == null) {
                 datePicker.show(childFragmentManager, "topup-picker")
@@ -73,15 +100,23 @@ class TrackTopupFragment : Fragment(R.layout.fragment_track_topup) {
                 .let { if (it.isNotBlank()) it else topupText }
             val date = tilTopupDate.editText?.text.toString()
                 .let { dateFormat.parse(it) ?: Date() }
+            val balanceText = (tilTopupBalance.editText as? AutoCompleteTextView)?.text.toString()
+            val balance = viewModel.balances.value
+                ?.firstOrNull {
+                    it is MainBalance && balanceText == mainBalanceText
+                            || it is SavingsBalance && balanceText == savingsBalanceText
+                            || it is SpecificBalance && balanceText == it.name
+                }
 
-            if (amount != null) {
+            if (amount == null) tilTopupAmount.error = requiredFieldText
+            if (balance == null) tilTopupBalance.error = requiredFieldText
+            if (amount != null && balance != null) {
                 viewModel.trackTopup(
                     amount = amount,
                     date = date,
-                    description = description
+                    description = description,
+                    balance = balance
                 )
-            } else {
-                tilTopupAmount.error = requiredFieldText
             }
         }
     }
